@@ -1,0 +1,73 @@
+[
+    [
+        {
+            "id": "node1",
+            "title": "Element 01 Line 01",
+            "link": "",
+            "connect": [
+                "node4",
+                "node5"
+            ]
+        },{
+            "id": "node2",
+            "title": "Element 02 Line 01",
+            "link": "",
+            "connect": [
+                "node5"
+            ]
+        },{
+            "id": "node3",
+            "title": "Element 03 Line 01",
+            "link": "",
+            "connect": [
+                "node5"
+            ]
+        }
+    ],
+    [
+        {
+            "id": "node4",
+            "title": "Element 01 Line 02"
+            ,
+            "link": "",
+            "connect": [
+                "node6"
+            ]
+        },{
+            "id": "node5",
+            "title": "Element 02 Line 02",
+            "link": "",
+            "connect": [
+                "node8"
+            ]
+        }
+    ],[
+        {
+            "id": "node6",
+            "title": "Element 01 Line 03",
+            "link": "",
+            "connect": [
+                "node7",
+                "node8",
+                "node9"
+            ]
+        }
+    ],[
+        {
+            "id": "node7",
+            "title": "Element 01 Line 04",
+            "link": "",
+            "connect": []
+        },{
+            "id": "node8",
+            "title": "Element 02 Line 04",
+            "link": "",
+            "connect": []
+        },{
+            "id": "node9",
+            "title": "Element 03 Line 04",
+            "link": "",
+            "connect": []
+        }
+    ]
+]
