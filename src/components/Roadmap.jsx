@@ -5,25 +5,23 @@ import Xarrow from "react-xarrows";
 import './Roadmap.css'
 
 function Roadmap(props) {
+  let connections = [];
+  for (let i = 0; i < props.nodes.length-1; i++) {
+    connections.push(<Xarrow key={`arrow_${i}_cnx_${i+1}`}
+      start={`Node_${i}`}	
+      end={`Node_${i+1}`}
+    />)
+  }
   return (
     <div className="container">
       {props.nodes.map((layerNode, layerNumber) => {
         return (
           <div className="layer" key={`layerdiv_${layerNumber}`}>
-            <Node nodeID={`Node_${layerNumber}`} node={layerNode} parent="" level={0}/>
+            <Node key={`Node_${layerNumber}`} nodeID={`Node_${layerNumber}`} node={layerNode} parent="" level={0}/>
           </div>
         )
       })}
-      {/* {
-        nodeList.map((node) => { return (
-          node.connect.map((connection, idx) => { return (
-            <Xarrow key={`arrow_${node.id}_cnx_${idx}`}
-              start={node.id}
-              end={connection}
-            />
-          )})
-        )})
-    } */}
+      {connections}
     </div>
     
   )
