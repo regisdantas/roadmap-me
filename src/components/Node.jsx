@@ -13,11 +13,32 @@ function Node ({ nodeID, node, parent, level}) {
   const nodeClass=(level===0?"mainNode":"childNode")
   let leftChildren = [];
   let rightChildren = [];
+  let arrows = [];
   node.children.map((child, idx) => {
     if ( (parent === "right" || idx%2 === 0) && parent !== "left") {
       leftChildren.push(<Node key={`${nodeID}.${idx}`} nodeID={`${nodeID}.${idx}`} node={child} parent="right" level={level+1}></Node>);
+      arrows.push(<Xarrow key={`arrow_${nodeID}_${nodeID}.${idx}`}
+        start={nodeID}	
+        end={`${nodeID}.${idx}`}
+        showHead={false}
+        showTail={false}
+        dashness={{animation: 1}}
+        path="smooth"
+        startAnchor="left"
+        endAnchor="right"
+      />);
     } else {
       rightChildren.push(<Node key={`${nodeID}.${idx}`} nodeID={`${nodeID}.${idx}`} node={child} parent="left" level={level+1}></Node>);
+      arrows.push(<Xarrow key={`arrow_${nodeID}_${nodeID}.${idx}`}
+        start={nodeID}	
+        end={`${nodeID}.${idx}`}
+        showHead={false}
+        showTail={false}
+        dashness={{animation: 1}}
+        path="smooth"
+        startAnchor="right"
+        endAnchor="left"
+      />);
     }
   })
   return (
@@ -25,17 +46,11 @@ function Node ({ nodeID, node, parent, level}) {
       <div id="leftChildGrid" className="childGrid">
       {leftChildren.map(child => child)}
     </div>
-      <div className={nodeClass} id={nodeID}>
-        <Card variant="outlined" style={{ padding: 10 }}>
+      <div className={nodeClass} >
+        <Card id={nodeID} variant="outlined" style={{ padding: 10 }}>
         <CardContent style={{ padding: 0 }}>
           <Typography sx={{ fontSize: 14 }} color="text.primary" gutterBottom>
           {node.title}
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {nodeID}
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {parent}
           </Typography>
         </CardContent>
       </Card>
@@ -43,18 +58,7 @@ function Node ({ nodeID, node, parent, level}) {
     <div id="rightChildGrid" className="childGrid">
         {rightChildren.map(child => child)}
     </div>
-    {node.children.map((child, idx) => {
-      return (
-        <Xarrow key={`arrow_${nodeID}_${nodeID}.${idx}`}
-          start={nodeID}	
-          end={`${nodeID}.${idx}`}
-          showHead={false}
-          showTail={false}
-          dashness={{animation: 1}}
-          path="smooth"
-        />
-      );
-    })}
+    {arrows}
   </div>
   );
 }
