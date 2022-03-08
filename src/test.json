@@ -1,637 +1,641 @@
-[
-    {
-        "title": "Internet",
-        "link": "",
-        "children": [
-            {
-                "title": "How does internet work?",
-                "link": "",
-                "children": []
-            },{
-                "title": "What is HTTP?",
-                "link": "",
-                "children": []
-            },{
-                "title": "Browsers and how they work?",
-                "link": "",
-                "children": []
-            },{
-                "title": "DNS and how it works?",
-                "link": "",
-                "children": []
-            },{
-                "title": "What's domain name?",
-                "link": "",
-                "children": []
-            },{
-                "title": "What's hosting?",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Basic Frontend Knowledge",
-        "link": "",
-        "children": [
-            {
-                "title": "HTML",
-                "link": "",
-                "children": []
-            },{
-                "title": "CSS",
-                "link": "",
-                "children": []
-            },{
-                "title": "JavaScript",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "OS and General Knowledge",
-        "link": "",
-        "children": [
-            {
-                "title": "Terminal Usage",
-                "link": "",
-                "children": []
-            },{
-                "title": "How OS work in General",
-                "link": "",
-                "children": []
-            },{
-                "title": "Process Management",
-                "link": "",
-                "children": []
-            },{
-                "title": "Threads and Concurrency",
-                "link": "",
-                "children": []
-            },{
-                "title": "Basic Terminal Commands",
-                "link": "",
-                "children": []
-            },{
-                "title": "Memory Management",
-                "link": "",
-                "children": []
-            },{
-                "title": "Inter Process Comunication",
-                "link": "",
-                "children": []
-            },{
-                "title": "I/O Management",
-                "link": "",
-                "children": []
-            },{
-                "title": "POSIX Basics",
-                "link": "",
-                "children": []
-            },{
-                "title": "Basic Networking Concepts",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Learn a Programming Language",
-        "link": "",
-        "children": [
-            {
-                "title": "Java",
-                "link": "",
-                "children": []
-            },{
-                "title": "C#",
-                "link": "",
-                "children": []
-            },{
-                "title": "PHP",
-                "link": "",
-                "children": []
-            },{
-                "title": "JavaScript",
-                "link": "",
-                "children": []
-            },{
-                "title": "Python",
-                "link": "",
-                "children": []
-            },{
-                "title": "Ruby",
-                "link": "",
-                "children": []
-            },{
-                "title": "Rust",
-                "link": "",
-                "children": []
-            },{
-                "title": "Go",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Version Control Systems",
-        "link": "",
-        "children": [
-            {
-                "title": "Basic Usage of Git",
-                "link": "",
-                "children": []
-            },{
-                "title": "Repo Hosting Services",
-                "link": "",
-                "children": [
-                    {
-                        "title": "GitHub",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "GitLab",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "BitBucket",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            }
-        ]
-    },{
-        "title": "Relational Databases",
-        "link": "",
-        "children": [
-            {
-                "title": "PostgreSQL",
-                "link": "",
-                "children": []
-            },{
-                "title": "MySQL",
-                "link": "",
-                "children": []
-            },{
-                "title": "MariaDB",
-                "link": "",
-                "children": []
-            },{
-                "title": "MS SQL Server",
-                "link": "",
-                "children": []
-            },{
-                "title": "Oracle",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "More about Databases",
-        "link": "",
-        "children": [
-            {
-                "title": "NoSQL Databases",
-                "link": "",
-                "children": [
-                    {
-                        "title": "Document MongoDB CouchDB",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Column DBs Cassandra",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Time Series InfluxDB TimescaleDB",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Realtime Firebase RethinkDB",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            },{
-                "title": "ORMs",
-                "link": "",
-                "children": []
-            },{
-                "title": "ACID",
-                "link": "",
-                "children": []
-            },{
-                "title": "Transactions",
-                "link": "",
-                "children": []
-            },{
-                "title": "N+1 Problem",
-                "link": "",
-                "children": []
-            },{
-                "title": "Database Normalization",
-                "link": "",
-                "children": []
-            },{
-                "title": "Indexes and how they work",
-                "link": "",
-                "children": []
-            },{
-                "title": "Data Replication",
-                "link": "",
-                "children": []
-            },{
-                "title": "Sharding Strategies",
-                "link": "",
-                "children": []
-            },{
-                "title": "CAP Theorem",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Learn about APIs",
-        "link": "",
-        "children": [
-            {
-                "title": "HATEOAS",
-                "link": "",
-                "children": []
-            },{
-                "title": "Open API Spec and Swagger",
-                "link": "",
-                "children": []
-            },{
-                "title": "Authentication",
-                "link": "",
-                "children": [
-                    {
-                        "title": "Cookie Based",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "OAuth",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Basic Authentication",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Token Authentication",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "JWT",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "OpenID",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "SAML",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            },{
-                "title": "JSON APIs",
-                "link": "",
-                "children": []
-            },{
-                "title": "SAOP",
-                "link": "",
-                "children": []
-            },{
-                "title": "gRPC",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Caching",
-        "link": "",
-        "children": [
-            {
-                "title": "CDN",
-                "link": "",
-                "children": []
-            },{
-                "title": "Server Side",
-                "link": "",
-                "children": [
-                    {
-                        "title": "Redis",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Memcached",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            },{
-                "title": "Client Side",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Web Security Knowledge",
-        "link": "",
-        "children": [
-            {
-                "title": "Hashing Algorithms",
-                "link": "",
-                "children": [
-                    {
-                        "title": "MD5 and why not to use it",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "SHA Family",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "scrypt",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "bcrypt",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            },{
-                "title": "HTTPS",
-                "link": "",
-                "children": []
-            },{
-                "title": "Content Security Policy",
-                "link": "",
-                "children": []
-            },{
-                "title": "CORS",
-                "link": "",
-                "children": []
-            },{
-                "title": "SSL/TLS",
-                "link": "",
-                "children": []
-            },{
-                "title": "OWSAP Security Risks",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Testing",
-        "link": "",
-        "children": [
-            {
-                "title": "Integration Testing",
-                "link": "",
-                "children": []
-            },{
-                "title": "Unit Testing",
-                "link": "",
-                "children": []
-            },{
-                "title": "Functional Testing",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "CI/CD",
-        "link": "",
-        "children": []
-    },{
-        "title": "Design and Development Principles",
-        "link": "",
-        "children": [
-            {
-                "title": "GOF Design Patterns",
-                "link": "",
-                "children": []
-            },{
-                "title": "Domain Driven Design",
-                "link": "",
-                "children": []
-            },{
-                "title": "Test Driven Design",
-                "link": "",
-                "children": []
-            },{
-                "title": "SOLID",
-                "link": "",
-                "children": []
-            },{
-                "title": "KISS",
-                "link": "",
-                "children": []
-            },{
-                "title": "YAGNI",
-                "link": "",
-                "children": []
-            },{
-                "title": "DRY",
-                "link": "",
-                "children": []
-            },{
-                "title": "Architectural Patterns",
-                "link": "",
-                "children": [
-                    {
-                        "title": "Monolithic Apps",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Microservices",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "SOA",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "CQRS and Event Sourcing",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Serverless",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            }
-        ]
-    },{
-        "title": "Search Engines",
-        "link": "",
-        "children": [
-            {
-                "title": "Elastic Search",
-                "link": "",
-                "children": []
-            },{
-                "title": "Solr",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Message Brokers",
-        "link": "",
-        "children": [
-            {
-                "title": "RabbitMQ",
-                "link": "",
-                "children": []
-            },{
-                "title": "Kafka",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Containerization and Virtualization",
-        "link": "",
-        "children": [
-            {
-                "title": "Docker",
-                "link": "",
-                "children": []
-            },{
-                "title": "rkt",
-                "link": "",
-                "children": []
-            },{
-                "title": "LXG",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "GraphQL",
-        "link": "",
-        "children": [
-            {
-                "title": "Apollo",
-                "link": "",
-                "children": []
-            },{
-                "title": "Relay Modern",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Graph Databases",
-        "link": "",
-        "children": [
-            {
-                "title": "Neo4j",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "WebSockets",
-        "link": "",
-        "children": []
-    },{
-        "title": "Web Servers",
-        "link": "",
-        "children": [
-            {
-                "title": "Nginx",
-                "link": "",
-                "children": []
-            },{
-                "title": "Apache",
-                "link": "",
-                "children": []
-            },{
-                "title": "Caddy",
-                "link": "",
-                "children": []
-            },{
-                "title": "MS IIS",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Building for Scale",
-        "link": "",
-        "children": [
-            {
-                "title": "Mitigation Strategies",
-                "link": "",
-                "children": [
-                    {
-                        "title": "Graceful",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Degradation",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Throttling",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Backpressure",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Loadshifting",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Circuit Breaker",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            },{
-                "title": "Understanding the Diff.",
-                "link": "",
-                "children": [
-                    {
-                        "title": "Instrumentation",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Monitoring",
-                        "link": "",
-                        "children": []
-                    },{
-                        "title": "Telemetry",
-                        "link": "",
-                        "children": []
-                    }
-                ]
-            },{
-                "title": "Migration Strategies",
-                "link": "",
-                "children": []
-            },{
-                "title": "Horizontal vs Vertical Scaling",
-                "link": "",
-                "children": []
-            },{
-                "title": "Building with Observability in Mind",
-                "link": "",
-                "children": []
-            }
-        ]
-    },{
-        "title": "Keep Learning",
-        "link": "",
-        "children": []
-    }
-]
+{
+    "start": "Back-end Roadmap",
+    "end": "Front-end Roadmap",
+    "nodes": [
+        {
+            "title": "Internet",
+            "link": "",
+            "children": [
+                {
+                    "title": "How does internet work?",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "What is HTTP?",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Browsers and how they work?",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "DNS and how it works?",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "What's domain name?",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "What's hosting?",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Basic Frontend Knowledge",
+            "link": "",
+            "children": [
+                {
+                    "title": "HTML",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "CSS",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "JavaScript",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "OS and General Knowledge",
+            "link": "",
+            "children": [
+                {
+                    "title": "Terminal Usage",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "How OS work in General",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Process Management",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Threads and Concurrency",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Basic Terminal Commands",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Memory Management",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Inter Process Comunication",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "I/O Management",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "POSIX Basics",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Basic Networking Concepts",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Learn a Programming Language",
+            "link": "",
+            "children": [
+                {
+                    "title": "Java",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "C#",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "PHP",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "JavaScript",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Python",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Ruby",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Rust",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Go",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Version Control Systems",
+            "link": "",
+            "children": [
+                {
+                    "title": "Basic Usage of Git",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Repo Hosting Services",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "GitHub",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "GitLab",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "BitBucket",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },{
+            "title": "Relational Databases",
+            "link": "",
+            "children": [
+                {
+                    "title": "PostgreSQL",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "MySQL",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "MariaDB",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "MS SQL Server",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Oracle",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "More about Databases",
+            "link": "",
+            "children": [
+                {
+                    "title": "NoSQL Databases",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "Document MongoDB CouchDB",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Column DBs Cassandra",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Time Series InfluxDB TimescaleDB",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Realtime Firebase RethinkDB",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                },{
+                    "title": "ORMs",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "ACID",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Transactions",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "N+1 Problem",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Database Normalization",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Indexes and how they work",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Data Replication",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Sharding Strategies",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "CAP Theorem",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Learn about APIs",
+            "link": "",
+            "children": [
+                {
+                    "title": "HATEOAS",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Open API Spec and Swagger",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Authentication",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "Cookie Based",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "OAuth",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Basic Authentication",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Token Authentication",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "JWT",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "OpenID",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "SAML",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                },{
+                    "title": "JSON APIs",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "SAOP",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "gRPC",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Caching",
+            "link": "",
+            "children": [
+                {
+                    "title": "CDN",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Server Side",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "Redis",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Memcached",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                },{
+                    "title": "Client Side",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Web Security Knowledge",
+            "link": "",
+            "children": [
+                {
+                    "title": "Hashing Algorithms",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "MD5 and why not to use it",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "SHA Family",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "scrypt",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "bcrypt",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                },{
+                    "title": "HTTPS",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Content Security Policy",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "CORS",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "SSL/TLS",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "OWSAP Security Risks",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Testing",
+            "link": "",
+            "children": [
+                {
+                    "title": "Integration Testing",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Unit Testing",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Functional Testing",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "CI/CD",
+            "link": "",
+            "children": []
+        },{
+            "title": "Design and Development Principles",
+            "link": "",
+            "children": [
+                {
+                    "title": "GOF Design Patterns",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Domain Driven Design",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Test Driven Design",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "SOLID",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "KISS",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "YAGNI",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "DRY",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Architectural Patterns",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "Monolithic Apps",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Microservices",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "SOA",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "CQRS and Event Sourcing",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Serverless",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },{
+            "title": "Search Engines",
+            "link": "",
+            "children": [
+                {
+                    "title": "Elastic Search",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Solr",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Message Brokers",
+            "link": "",
+            "children": [
+                {
+                    "title": "RabbitMQ",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Kafka",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Containerization and Virtualization",
+            "link": "",
+            "children": [
+                {
+                    "title": "Docker",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "rkt",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "LXG",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "GraphQL",
+            "link": "",
+            "children": [
+                {
+                    "title": "Apollo",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Relay Modern",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Graph Databases",
+            "link": "",
+            "children": [
+                {
+                    "title": "Neo4j",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "WebSockets",
+            "link": "",
+            "children": []
+        },{
+            "title": "Web Servers",
+            "link": "",
+            "children": [
+                {
+                    "title": "Nginx",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Apache",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Caddy",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "MS IIS",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Building for Scale",
+            "link": "",
+            "children": [
+                {
+                    "title": "Mitigation Strategies",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "Graceful",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Degradation",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Throttling",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Backpressure",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Loadshifting",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Circuit Breaker",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                },{
+                    "title": "Understanding the Diff.",
+                    "link": "",
+                    "children": [
+                        {
+                            "title": "Instrumentation",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Monitoring",
+                            "link": "",
+                            "children": []
+                        },{
+                            "title": "Telemetry",
+                            "link": "",
+                            "children": []
+                        }
+                    ]
+                },{
+                    "title": "Migration Strategies",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Horizontal vs Vertical Scaling",
+                    "link": "",
+                    "children": []
+                },{
+                    "title": "Building with Observability in Mind",
+                    "link": "",
+                    "children": []
+                }
+            ]
+        },{
+            "title": "Keep Learning",
+            "link": "",
+            "children": []
+        }
+    ]
+}

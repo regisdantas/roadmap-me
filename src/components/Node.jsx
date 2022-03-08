@@ -45,8 +45,8 @@ function Node ({ nodeID, node, parent, level}) {
       {leftChildren.map(child => child)}
     </div>
       <div className={nodeClass} >
-        <Paper  id={nodeID} variant="outlined" style={{ padding: 10 }}>
-          <Typography sx={{ fontSize: 14 }} color="text.primary" gutterBottom>
+        <Paper  id={nodeID} variant="outlined" style={{padding: "0px 10px 0px", backgroundColor: "yellow", border: "3px solid black" }}>
+          <Typography sx={{ fontSize: 14, fontWeight: 'bold'}} color="text.primary" gutterBottom>
           {node.title}
           </Typography>
       </Paper >
