@@ -10,6 +10,12 @@ function Roadmap(props) {
     connections.push(<Xarrow key={`arrow_${i}_cnx_${i+1}`}
       start={`Node_${i}`}	
       end={`Node_${i+1}`}
+      startAnchor="bottom"
+      endAnchor="top"
+      showHead={false}
+      showTail={false}
+      dashness={{animation: 1}}
+      path="smooth"
     />)
   }
   return (

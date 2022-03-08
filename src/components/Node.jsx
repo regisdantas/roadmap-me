@@ -26,9 +26,9 @@ function Node ({ nodeID, node, parent, level}) {
       {leftChildren.map(child => child)}
     </div>
       <div className={nodeClass} id={nodeID}>
-        <Card style={{ width: 300 }}>
+        <Card variant="outlined" style={{ padding: 10 }}>
         <CardContent style={{ padding: 0 }}>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          <Typography sx={{ fontSize: 14 }} color="text.primary" gutterBottom>
           {node.title}
           </Typography>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -48,6 +48,10 @@ function Node ({ nodeID, node, parent, level}) {
         <Xarrow key={`arrow_${nodeID}_${nodeID}.${idx}`}
           start={nodeID}	
           end={`${nodeID}.${idx}`}
+          showHead={false}
+          showTail={false}
+          dashness={{animation: 1}}
+          path="smooth"
         />
       );
     })}
