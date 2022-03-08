@@ -55,7 +55,13 @@ function Node ({ nodeID, node, parent, level}) {
           <CheckCircleTwoTone color="secondary" fontSize="small" style={{ backgroundColor: 'white'}}/>
           <AddCircleTwoTone color="success" fontSize="small" style={{backgroundColor: 'white'}}/>
         </div>
-        <Paper  id={nodeID} variant="outlined" style={{ minWidth: "100px", padding: "5px 10px 0px", backgroundColor: "yellow", border: "3px solid black" }}>
+        <Paper className="Paper" id={nodeID} variant="outlined" sx={{ 
+          backgroundColor: 'yellow',
+          '&:hover': {
+              backgroundColor: 'orange',
+          },
+        }}
+        style={{ minWidth: "100px", padding: "5px 10px 0px", border: "3px solid black" }}>
           <Typography sx={{ fontSize: 14, fontWeight: 'bold', textAlign: "center"}} color="text.primary" gutterBottom>
           {node.title}
           </Typography>

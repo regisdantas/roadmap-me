@@ -7,6 +7,15 @@
     padding: 0px 50px 50px;
 }
 
+.mainNode > .Paper {
+    background-color: gold;
+    font-size: 20px;
+}
+
+.mainNode > .Paper > p {
+    font-size: large;
+}
+
 .childNode {
     /* border: 3px solid rgb(60, 138, 64); */
     display: inline-block;
