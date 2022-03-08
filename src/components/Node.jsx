@@ -1,5 +1,6 @@
 import React from "react";
 import Xarrow from "react-xarrows";
+import { CheckCircleTwoTone, AddCircleTwoTone } from '@mui/icons-material';
 
 import {
   Paper ,
@@ -42,11 +43,20 @@ function Node ({ nodeID, node, parent, level}) {
   return (
     <div className="nodeGrid">
       <div id="leftChildGrid" className="childGrid">
-      {leftChildren.map(child => child)}
-    </div>
+        {leftChildren.map(child => child)}
+      </div>
       <div className={nodeClass} >
-        <Paper  id={nodeID} variant="outlined" style={{padding: "0px 10px 0px", backgroundColor: "yellow", border: "3px solid black" }}>
-          <Typography sx={{ fontSize: 14, fontWeight: 'bold'}} color="text.primary" gutterBottom>
+        <div style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "right",
+          position: 'relative', top: 10,
+        }}>
+          <CheckCircleTwoTone color="secondary" fontSize="small" style={{ backgroundColor: 'white'}}/>
+          <AddCircleTwoTone color="success" fontSize="small" style={{backgroundColor: 'white'}}/>
+        </div>
+        <Paper  id={nodeID} variant="outlined" style={{ minWidth: "100px", padding: "5px 10px 0px", backgroundColor: "yellow", border: "3px solid black" }}>
+          <Typography sx={{ fontSize: 14, fontWeight: 'bold', textAlign: "center"}} color="text.primary" gutterBottom>
           {node.title}
           </Typography>
       </Paper >

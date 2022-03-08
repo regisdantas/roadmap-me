@@ -46,9 +46,11 @@ function Roadmap(props) {
     startAnchor="bottom"
     endAnchor="bottom"
     labels={{
-      middle: (<Typography sx={{ fontSize: 20, fontWeight: 'bold', backgroundColor: "white"}} color="text.primary" gutterBottom>
-          {end}
-        </Typography>)
+      middle: (
+        <Typography sx={{ fontSize: 20, fontWeight: 'bold', backgroundColor: "white"}} color="text.primary" gutterBottom>
+            {end}
+        </Typography>
+      )
     }}
   />)
   return (
