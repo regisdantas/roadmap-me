@@ -1,5 +1,30 @@
-.node {
-    border: 1px solid rgb(0, 255, 13);
+.mainNode {
+    border: 3px solid rgb(0, 255, 13);
     display: inline-block;
     margin: 20px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.childNode {
+    border: 3px solid rgb(60, 138, 64);
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+
+.childGrid {
+    /* border: 3px solid rgb(255, 0, 179);
+    margin: 10px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nodeGrid {
+    /* border: 3px solid rgb(255, 251, 0);
+    margin: 10px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

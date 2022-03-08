@@ -5,22 +5,16 @@ import Xarrow from "react-xarrows";
 import './Roadmap.css'
 
 function Roadmap(props) {
-  let nodeList = [];
   return (
     <div className="container">
-      {props.nodes.map((layer, layerNumber) => {
+      {props.nodes.map((layerNode, layerNumber) => {
         return (
           <div className="layer" key={`layerdiv_${layerNumber}`}>
-            {layer.map((node) => {
-              nodeList.push(node);
-              return (
-                <Node key={node.id} nodeID={node.id} title={node.title} link=""/>
-              )
-            })}
+            <Node nodeID={`Node_${layerNumber}`} node={layerNode} parent="" level={0}/>
           </div>
         )
       })}
-      {
+      {/* {
         nodeList.map((node) => { return (
           node.connect.map((connection, idx) => { return (
             <Xarrow key={`arrow_${node.id}_cnx_${idx}`}
@@ -29,7 +23,7 @@ function Roadmap(props) {
             />
           )})
         )})
-    }
+    } */}
     </div>
     
   )
