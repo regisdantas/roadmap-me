@@ -1,12 +1,14 @@
 import React from "react";
 import Xarrow from "react-xarrows";
+import { useXarrow } from "react-xarrows";
+
 import {
   CheckCircleTwoTone,
   AddCircleTwoTone,
   DeleteTwoTone,
 } from "@mui/icons-material";
 
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, IconButton } from "@mui/material";
 
 import "./Node.css";
 
@@ -17,7 +19,8 @@ const arrowProps = {
   path: "smooth",
 };
 
-function Node({ nodeID, node, parent, level }) {
+function Node({ nodeID, node, parent, level, onAdd, onDelete, onCheck }) {
+  const updateXarrow = useXarrow();
   const nodeClass = level === 0 ? "mainNode" : "childNode";
   let leftChildren = [];
   let rightChildren = [];
@@ -31,6 +34,9 @@ function Node({ nodeID, node, parent, level }) {
           node={child}
           parent="right"
           level={level + 1}
+          onAdd={onAdd}
+          onDelete={onDelete}
+          onCheck={onCheck}
         ></Node>
       );
       arrows.push(
@@ -51,6 +57,9 @@ function Node({ nodeID, node, parent, level }) {
           node={child}
           parent="left"
           level={level + 1}
+          onAdd={onAdd}
+          onDelete={onDelete}
+          onCheck={onCheck}
         ></Node>
       );
       arrows.push(
@@ -81,21 +90,50 @@ function Node({ nodeID, node, parent, level }) {
             right: "-10px",
           }}
         >
-          <CheckCircleTwoTone
-            color="secondary"
-            fontSize="small"
-            style={{ backgroundColor: "white", borderRadius: "25px" }}
-          />
-          <DeleteTwoTone
-            color="error"
-            fontSize="small"
-            style={{ backgroundColor: "white", borderRadius: "25px" }}
-          />
-          <AddCircleTwoTone
-            color="success"
-            fontSize="small"
-            style={{ backgroundColor: "white", borderRadius: "25px" }}
-          />
+          <IconButton
+            size="small"
+            edge="start"
+            color="inherit"
+            aria-label="check"
+            sx={{ mr: 0 }}
+            onClick={() => onCheck(nodeID)}
+          >
+            <CheckCircleTwoTone
+              color="secondary"
+              fontSize="small"
+              style={{ backgroundColor: "white", borderRadius: "25px" }}
+            />
+          </IconButton>
+
+          <IconButton
+            size="small"
+            edge="start"
+            color="inherit"
+            aria-label="delete"
+            sx={{ mr: 0 }}
+            onClick={() => onDelete(nodeID)}
+          >
+            <DeleteTwoTone
+              color="error"
+              fontSize="small"
+              style={{ backgroundColor: "white", borderRadius: "25px" }}
+            />
+          </IconButton>
+
+          <IconButton
+            size="small"
+            edge="start"
+            color="inherit"
+            aria-label="add"
+            sx={{ mr: 0 }}
+            onClick={() => onAdd(nodeID)}
+          >
+            <AddCircleTwoTone
+              color="success"
+              fontSize="small"
+              style={{ backgroundColor: "white", borderRadius: "25px" }}
+            />
+          </IconButton>
         </div>
         <Paper
           className="Paper"

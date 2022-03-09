@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { IconButton, AppBar, Toolbar, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
 function Header(props) {
   return (
@@ -12,16 +11,6 @@ function Header(props) {
           backgroundColor: "black",
         }}
       >
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ mr: 2 }}
-          onClick={() => props.toggleMenu(true)}
-        >
-          <MenuIcon />
-        </IconButton>
         <Typography
           sx={{
             fontSize: 20,

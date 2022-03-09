@@ -1,28 +1,27 @@
 import React from "react";
 import Roadmap from "./components/Roadmap";
 import Header from "./components/Header";
-import Menu from "./components/Menu";
 import Footer from "./components/Footer";
-import config from "./test.json";
+import projectConfigFile from "./test.json";
 import "./App.css";
 
 function App() {
-  // const [nodeList, setNodeList] = React.useState(config);
-  const [menuState, setMenuState] = React.useState(false);
+  const [projectConfig, setProjectConfig] = React.useState(projectConfigFile);
+  console.log(projectConfig);
 
-  const toggleMenu = (state) => {
-    setMenuState(state);
-  };
+  function onProjectChange(newProjectConfig) {
+    console.log(newProjectConfig);
+    setProjectConfig(newProjectConfig);
+  }
 
   return (
     <div className="App">
-      <Header toggleMenu={(state) => toggleMenu(state)} />
+      <Header />
       <div>
-        <Menu
-          menuState={menuState}
-          toggleMenu={(state) => toggleMenu(state)}
-        ></Menu>
-        <Roadmap config={config}></Roadmap>
+        <Roadmap
+          projectConfig={projectConfig}
+          onChange={onProjectChange}
+        ></Roadmap>
       </div>
 
       <Footer />

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Node from "./Node";
 import Xarrow from "react-xarrows";
+import { Xwrapper } from "react-xarrows";
 import { AddCircleTwoTone } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import "./Roadmap.css";
@@ -15,8 +16,53 @@ const arrowProps = {
   color: "blue",
 };
 
-function Roadmap(props) {
-  const { start, end, nodes } = props.config;
+function Roadmap({ projectConfig, onChange }) {
+  function getIndexes(nodeID) {
+    const str = nodeID.replace("Node_", "");
+    const idxs = str.split(".");
+    return idxs;
+  }
+
+  function onNodeAdd(nodeID) {
+    let newProjectConfig = { ...projectConfig };
+    let parentNode = { children: newProjectConfig.nodes };
+    const idxs = getIndexes(nodeID);
+    if (idxs.length === 0) {
+      return;
+    }
+    idxs.map((idx) => {
+      parentNode = parentNode.children[idx];
+    });
+    const newNode = {
+      title: "New Node",
+      link: "",
+      children: [],
+    };
+    parentNode.children.push(newNode);
+
+    onChange(newProjectConfig);
+  }
+
+  const onNodeDelete = function (nodeID) {
+    let newProjectConfig = { ...projectConfig };
+    let parentNode = { children: newProjectConfig.nodes };
+    const idxs = getIndexes(nodeID);
+    if (idxs.length === 0 || newProjectConfig.nodes <= 1) {
+      return;
+    }
+    for (let i = 0; i < idxs.length - 1; i++) {
+      parentNode = parentNode.children[idxs[i]];
+    }
+    parentNode.children.splice(idxs[idxs.length - 1], 1);
+    onChange(newProjectConfig);
+  };
+
+  const onNodeCheck = function (nodeID) {
+    console.log(nodeID);
+  };
+
+  const onCnxAdd = function () {};
+
   let connections = [];
   connections.push(
     <Xarrow
@@ -39,7 +85,7 @@ function Roadmap(props) {
               color="text.primary"
               gutterBottom
             >
-              {start}
+              {projectConfig.start}
             </Typography>
             <div
               style={{
@@ -59,7 +105,7 @@ function Roadmap(props) {
       }}
     />
   );
-  for (let i = 0; i < nodes.length - 1; i++) {
+  for (let i = 0; i < projectConfig.nodes.length - 1; i++) {
     connections.push(
       <Xarrow
         {...arrowProps}
@@ -83,8 +129,8 @@ function Roadmap(props) {
   connections.push(
     <Xarrow
       {...arrowProps}
-      key={`arrow_Node_${nodes.length - 1}_container`}
-      start={`Node_${nodes.length - 1}`}
+      key={`arrow_Node_${projectConfig.nodes.length - 1}_container`}
+      start={`Node_${projectConfig.nodes.length - 1}`}
       end={"container"}
       startAnchor="bottom"
       endAnchor="bottom"
@@ -114,7 +160,7 @@ function Roadmap(props) {
               color="text.primary"
               gutterBottom
             >
-              {end}
+              {projectConfig.end}
             </Typography>
           </div>
         ),
@@ -123,20 +169,25 @@ function Roadmap(props) {
   );
   return (
     <div className="container" id="container">
-      {nodes.map((layerNode, layerNumber) => {
-        return (
-          <div className="layer" key={`layerdiv_${layerNumber}`}>
-            <Node
-              key={`Node_${layerNumber}`}
-              nodeID={`Node_${layerNumber}`}
-              node={layerNode}
-              parent=""
-              level={0}
-            />
-          </div>
-        );
-      })}
-      {connections}
+      <Xwrapper>
+        {projectConfig.nodes.map((layerNode, layerNumber) => {
+          return (
+            <div className="layer" key={`layerdiv_${layerNumber}`}>
+              <Node
+                key={`Node_${layerNumber}`}
+                nodeID={`Node_${layerNumber}`}
+                node={layerNode}
+                parent=""
+                level={0}
+                onAdd={onNodeAdd}
+                onDelete={onNodeDelete}
+                onCheck={onNodeCheck}
+              />
+            </div>
+          );
+        })}
+        {connections}
+      </Xwrapper>
     </div>
   );
 }

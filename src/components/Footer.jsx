@@ -12,8 +12,8 @@ function Footer(props) {
         bottom: 0,
         zIndex: "2",
         display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
+        flexDirection: "row",
+        justifyContent: "center",
       }}
     >
       <Typography
