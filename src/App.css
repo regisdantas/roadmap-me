@@ -3,3 +3,11 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.mainBody {
+  position: 'fixed';
+  top: 45px;
+  bottom: 45px;
+  width: 100%;
+  /* border: 1px solid blue; */
+}

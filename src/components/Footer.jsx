@@ -4,41 +4,35 @@ import { Toolbar, Typography } from "@mui/material";
 
 function Footer(props) {
   return (
-    <Toolbar
-      variant="dense"
-      sx={{
-        backgroundColor: "black",
-        position: "sticky",
+    <div
+      style={{
+        position: "fixed",
         bottom: 0,
-        zIndex: "2",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
+        width: "100%",
       }}
     >
-      <Typography
+      <Toolbar
+        variant="dense"
         sx={{
-          fontSize: 20,
-          fontWeight: "bold",
-          position: "absolute",
-          left: "100px",
+          backgroundColor: "black",
+          zIndex: "2",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
         }}
-        color="white"
-        gutterBottom
       >
-        {"</roadmap-diagrams>"}
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: 14,
-          fontWeight: "",
-        }}
-        color="white"
-        gutterBottom
-      >
-        {"by Regis Dantas"}
-      </Typography>
-    </Toolbar>
+        <Typography
+          sx={{
+            fontSize: 14,
+            fontWeight: "",
+          }}
+          color="white"
+          gutterBottom
+        >
+          {"by Regis Dantas"}
+        </Typography>
+      </Toolbar>
+    </div>
   );
 }
 

@@ -31,7 +31,7 @@ function Connection(props) {
               color="text.primary"
               gutterBottom
             >
-              {props.middleLable}
+              {props.middleLabel}
             </Typography>
             <div
               style={{

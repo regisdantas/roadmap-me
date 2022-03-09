@@ -110,6 +110,7 @@ function Roadmap({ projectConfig, onChange }) {
   return (
     <div className="container" id="container">
       <Xwrapper>
+        {connections}
         {projectConfig.nodes.map((layerNode, layerNumber) => {
           return (
             <div className="layer" key={`layerdiv_${layerNumber}`}>
@@ -126,7 +127,6 @@ function Roadmap({ projectConfig, onChange }) {
             </div>
           );
         })}
-        {connections}
       </Xwrapper>
     </div>
   );
