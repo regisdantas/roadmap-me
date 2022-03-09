@@ -19,7 +19,7 @@ const arrowProps = {
   path: "smooth",
 };
 
-function Node({ nodeID, node, parent, level, onAdd, onDelete, onCheck }) {
+function Node({ nodeID, node, parent, level, onClick, onAdd, onDelete, onCheck }) {
   const updateXarrow = useXarrow();
   const nodeClass = level === 0 ? "mainNode" : "childNode";
   let leftChildren = [];
@@ -34,6 +34,7 @@ function Node({ nodeID, node, parent, level, onAdd, onDelete, onCheck }) {
           node={child}
           parent="right"
           level={level + 1}
+          onClick={onClick}
           onAdd={onAdd}
           onDelete={onDelete}
           onCheck={onCheck}
@@ -57,6 +58,7 @@ function Node({ nodeID, node, parent, level, onAdd, onDelete, onCheck }) {
           node={child}
           parent="left"
           level={level + 1}
+          onClick={onClick}
           onAdd={onAdd}
           onDelete={onDelete}
           onCheck={onCheck}
@@ -150,6 +152,7 @@ function Node({ nodeID, node, parent, level, onAdd, onDelete, onCheck }) {
             padding: "5px 10px 0px",
             border: "3px solid black",
           }}
+          onClick={() => onClick(node.title)}
         >
           <Typography
             sx={{ fontSize: 14, fontWeight: "bold", textAlign: "center" }}

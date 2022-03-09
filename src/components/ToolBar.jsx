@@ -1,7 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { AppBar, Toolbar, TextField } from "@mui/material";
-import { BackupTableTwoTone } from "@mui/icons-material";
+import { AppBar, Toolbar, TextField, IconButton, Input } from "@mui/material";
+import {
+  BackupTableTwoTone,
+  SaveTwoTone,
+  FeedTwoTone,
+  FolderOpenTwoTone,
+  SaveAsTwoTone,
+} from "@mui/icons-material";
 
 const styles = {
   customizeToolbar: {
@@ -9,7 +15,7 @@ const styles = {
   },
 };
 
-function ToolBar(props) {
+function ToolBar({ projectName, onOpenFile }) {
   return (
     <AppBar position="fixed" sx={{ top: "48px", zIndex: "2" }}>
       <Toolbar
@@ -36,15 +42,57 @@ function ToolBar(props) {
             }}
           >
             <BackupTableTwoTone
-              color="primary"
+              color="disabled"
               sx={{ margin: "4px 5px 0px" }}
             ></BackupTableTwoTone>
             <TextField
               variant="standard"
               size="small"
               color="primary"
-              sx={{ backgroundColor: "white", margin: "2px 5px 0px" }}
+              sx={{
+                backgroundColor: "white",
+                margin: "2px 5px 0px",
+                padding: "0px 5px 0px",
+              }}
+              defaultValue={projectName}
             ></TextField>
+            <IconButton
+              size="small"
+              edge="start"
+              color="primary"
+              aria-label="check"
+              sx={{ mr: 0 }}
+            >
+              <FeedTwoTone />
+            </IconButton>
+            <IconButton
+              size="small"
+              edge="start"
+              aria-label="check"
+              sx={{ mr: 0, color: "orange" }}
+              component="label"
+            >
+              <FolderOpenTwoTone />
+              <input type="file" hidden onChange={(e) => onOpenFile(e)} />
+            </IconButton>
+            <IconButton
+              size="small"
+              edge="start"
+              color="success"
+              aria-label="check"
+              sx={{ mr: 0 }}
+            >
+              <SaveTwoTone />
+            </IconButton>
+            <IconButton
+              size="small"
+              edge="start"
+              color="secondary"
+              aria-label="check"
+              sx={{ mr: 0 }}
+            >
+              <SaveAsTwoTone />
+            </IconButton>
           </div>
         </div>
       </Toolbar>

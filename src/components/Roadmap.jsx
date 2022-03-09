@@ -5,7 +5,7 @@ import Connection from "./Connection";
 import { Xwrapper } from "react-xarrows";
 import "./Roadmap.css";
 
-function Roadmap({ projectConfig, onChange }) {
+function Roadmap({ projectConfig, onChange, onNodeClick }) {
   function getIndexes(nodeID) {
     const str = nodeID.replace("Node_", "");
     const idxs = str.split(".");
@@ -123,6 +123,7 @@ function Roadmap({ projectConfig, onChange }) {
                 onAdd={onNodeAdd}
                 onDelete={onNodeDelete}
                 onCheck={onNodeCheck}
+                onClick={onNodeClick}
               />
             </div>
           );
