@@ -5,14 +5,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 function Header(props) {
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" top="0" zIndex="2">
       <Toolbar
         variant="dense"
         sx={{
           backgroundColor: "black",
-          position: "sticky",
-          top: 0,
-          zIndex: "2",
         }}
       >
         <IconButton
@@ -21,6 +18,7 @@ function Header(props) {
           color="inherit"
           aria-label="menu"
           sx={{ mr: 2 }}
+          onClick={() => props.toggleMenu(true)}
         >
           <MenuIcon />
         </IconButton>
@@ -28,8 +26,8 @@ function Header(props) {
           sx={{
             fontSize: 20,
             fontWeight: "bold",
-            position: "relative",
-            left: "20%",
+            position: "absolute",
+            left: "100px",
           }}
           color="white"
           gutterBottom

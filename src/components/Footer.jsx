@@ -11,19 +11,32 @@ function Footer(props) {
         position: "sticky",
         bottom: 0,
         zIndex: "2",
+        display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
       }}
     >
       <Typography
         sx={{
           fontSize: 20,
           fontWeight: "bold",
-          position: "relative",
-          left: "20%",
+          position: "absolute",
+          left: "100px",
         }}
         color="white"
         gutterBottom
       >
         {"</roadmap-diagrams>"}
+      </Typography>
+      <Typography
+        sx={{
+          fontSize: 14,
+          fontWeight: "",
+        }}
+        color="white"
+        gutterBottom
+      >
+        {"by Regis Dantas"}
       </Typography>
     </Toolbar>
   );
