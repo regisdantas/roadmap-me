@@ -1,6 +1,6 @@
 {
-  "homepage": "https://regisdantas.github.io/roadmap-diagrams",
-  "name": "roadmap-diagram",
+  "homepage": "https://regisdantas.github.io/roadmap-me",
+  "name": "roadmap-me",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
+    "docker-deploy": "docker build -t regismdantas/roadmap-me . ; docker run -it -v $(pwd)/src:/app/src -d -p 3000:3000 --name roadmap-me-ctr regismdantas/roadmap-me" 
   },
   "eslintConfig": {
     "extends": [

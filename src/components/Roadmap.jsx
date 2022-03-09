@@ -6,6 +6,12 @@ import { Xwrapper } from "react-xarrows";
 import "./Roadmap.css";
 
 function Roadmap({ projectConfig, onChange, onNodeClick }) {
+  const newNode = {
+    title: "New Node",
+    content: "",
+    children: [],
+  };
+
   function getIndexes(nodeID) {
     const str = nodeID.replace("Node_", "");
     const idxs = str.split(".");
@@ -22,11 +28,7 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     idxs.map((idx) => {
       parentNode = parentNode.children[idx];
     });
-    let newNode = {
-      title: "New Node",
-      link: "",
-      children: [],
-    };
+  
     parentNode.children.push(newNode);
 
     onChange(newProjectConfig);
@@ -51,12 +53,6 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
   };
 
   const onCnxAdd = function (start, end) {
-    console.log(start, end);
-    let newNode = {
-      title: "New Node",
-      link: "",
-      children: [],
-    };
     let newProjectConfig = { ...projectConfig };
     if (start === "container") {
       newProjectConfig.nodes = [newNode, ...newProjectConfig.nodes];
@@ -64,7 +60,6 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
       newProjectConfig.nodes.push(newNode);
     } else {
       let idx = getIndexes(start);
-      console.log(start, idx);
       newProjectConfig.nodes.splice(Number(idx[0]) + 1, 0, newNode);
     }
     onChange(newProjectConfig);

@@ -15,6 +15,7 @@ const startProject = {
   nodes: [
     {
       title: "To Accomplish",
+      content: "",
       children: [],
     },
   ],
@@ -25,11 +26,8 @@ function App() {
   const [contentViewState, setContentViewState] = React.useState(false);
   const [contentViewContent, setContentViewContent] = React.useState("");
 
-  function loadNodeContentView(nodeTitle) {
-    let fileName = (nodeTitle.split(" ")).map((word) => (word[0].toUpperCase() + word.substr(1))).join("");
-    fileName=(fileName.replace(/[ &\/\\#,+()$~%.'":*?<>{}]/g, ""));
-    let fileBase64 = projectConfig[fileName];
-    setContentViewContent(atob(fileBase64));
+  function loadNodeContentView(nodeContent) {
+    setContentViewContent(atob(nodeContent));
     toggleContentView(true);
   }
 
