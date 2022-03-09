@@ -1,14 +1,14 @@
 .container {
-    /* border: 1px solid rgb(255, 0, 0); */
-    flex: 1;
-    padding: 50px;
+  /* border: 1px solid rgb(255, 0, 0); */
+  flex: 1;
+  padding: 50px;
 }
 
 .layer {
-    /* border: 1px solid rgb(0, 4, 255); */
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 10px;
+  /* border: 1px solid rgb(0, 4, 255); */
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
 }
