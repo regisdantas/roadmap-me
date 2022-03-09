@@ -6,7 +6,7 @@
 ![Stars](https://img.shields.io/github/stars/regisdantas/roadmap-me)
 ![Licence](https://img.shields.io/github/license/regisdantas/roadmap-me)
 ![Issues](https://img.shields.io/github/issues/regisdantas/roadmap-me)
-![Chat](https://img.shields.io/badge/chat-discussions-success.svg)(https://github.com/regisdantas/roadmap-me/discussions)
+[![Chat](https://img.shields.io/badge/chat-discussions-success.svg)](https://github.com/regisdantas/roadmap-me/discussions)
 
 ## This is a Single Page Application for creating and editing roadmap project
 
