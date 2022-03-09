@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/roadmap-diagrams/static/css/main.d150b5af.css",
-    "main.js": "/roadmap-diagrams/static/js/main.3fbbe50d.js",
+    "main.css": "/roadmap-diagrams/static/css/main.8aabb1db.css",
+    "main.js": "/roadmap-diagrams/static/js/main.f68a783b.js",
+    "static/media/balsamiq.woff2": "/roadmap-diagrams/static/media/balsamiq.0856531d50c3c2b0b724.woff2",
+    "static/media/Typewalk1915.otf": "/roadmap-diagrams/static/media/Typewalk1915.221400c0312452466f96.otf",
     "index.html": "/roadmap-diagrams/index.html",
-    "main.d150b5af.css.map": "/roadmap-diagrams/static/css/main.d150b5af.css.map",
-    "main.3fbbe50d.js.map": "/roadmap-diagrams/static/js/main.3fbbe50d.js.map"
+    "main.8aabb1db.css.map": "/roadmap-diagrams/static/css/main.8aabb1db.css.map",
+    "main.f68a783b.js.map": "/roadmap-diagrams/static/js/main.f68a783b.js.map"
   },
   "entrypoints": [
-    "static/css/main.d150b5af.css",
-    "static/js/main.3fbbe50d.js"
+    "static/css/main.8aabb1db.css",
+    "static/js/main.f68a783b.js"
   ]
 }
