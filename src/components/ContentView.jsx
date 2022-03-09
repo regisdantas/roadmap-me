@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import ReactMarkdown from "react-markdown";
+import "./ContentView.css";
 
 function ContentView(props) {
   return (
@@ -13,12 +14,10 @@ function ContentView(props) {
         onClose={() => props.toggleContentView(false)}
       >
         <Box
-          sx={{ width: 600 }}
+          sx={{ width: "50vw" }}
           role="presentation"
-          onClick={() => props.toggleContentView(false)}
-          onKeyDown={() => props.toggleContentView(false)}
         >
-          <div style={{ margin: '0px 20px 0px', padding: '0px 20px 0px' }}>
+          <div className="contentView" style={{ margin: '0px 20px 0px', padding: '0px 20px 0px' }}>
             <ReactMarkdown>{props.contentViewContent}</ReactMarkdown>
           </div>
         </Box>

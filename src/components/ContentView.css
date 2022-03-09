@@ -1,0 +1,12 @@
+.contentView > * {
+  color: rgb(0, 0, 0);
+  font-family: Arial;
+}
+
+.code {
+  font-family: 'Courier New';
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre;
+  word-wrap: normal;
+}
