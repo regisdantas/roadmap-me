@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/roadmap-diagram/static/css/main.d150b5af.css",
-    "main.js": "/roadmap-diagram/static/js/main.3fbbe50d.js",
-    "index.html": "/roadmap-diagram/index.html",
-    "main.d150b5af.css.map": "/roadmap-diagram/static/css/main.d150b5af.css.map",
-    "main.3fbbe50d.js.map": "/roadmap-diagram/static/js/main.3fbbe50d.js.map"
+    "main.css": "/roadmap-diagrams/static/css/main.d150b5af.css",
+    "main.js": "/roadmap-diagrams/static/js/main.3fbbe50d.js",
+    "index.html": "/roadmap-diagrams/index.html",
+    "main.d150b5af.css.map": "/roadmap-diagrams/static/css/main.d150b5af.css.map",
+    "main.3fbbe50d.js.map": "/roadmap-diagrams/static/js/main.3fbbe50d.js.map"
   },
   "entrypoints": [
     "static/css/main.d150b5af.css",
