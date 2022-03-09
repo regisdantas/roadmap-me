@@ -7,10 +7,8 @@ import "./App.css";
 
 function App() {
   const [projectConfig, setProjectConfig] = React.useState(projectConfigFile);
-  console.log(projectConfig);
 
   function onProjectChange(newProjectConfig) {
-    console.log(newProjectConfig);
     setProjectConfig(newProjectConfig);
   }
 

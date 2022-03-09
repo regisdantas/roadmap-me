@@ -1,20 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Node from "./Node";
-import Xarrow from "react-xarrows";
+import Connection from "./Connection";
 import { Xwrapper } from "react-xarrows";
-import { AddCircleTwoTone } from "@mui/icons-material";
-import { Typography } from "@mui/material";
 import "./Roadmap.css";
-
-const arrowProps = {
-  showHead: false,
-  showTail: false,
-  dashness: { animation: 1 },
-  path: "smooth",
-  strokeWidth: 6,
-  color: "blue",
-};
 
 function Roadmap({ projectConfig, onChange }) {
   function getIndexes(nodeID) {
@@ -33,7 +22,7 @@ function Roadmap({ projectConfig, onChange }) {
     idxs.map((idx) => {
       parentNode = parentNode.children[idx];
     });
-    const newNode = {
+    let newNode = {
       title: "New Node",
       link: "",
       children: [],
@@ -61,110 +50,61 @@ function Roadmap({ projectConfig, onChange }) {
     console.log(nodeID);
   };
 
-  const onCnxAdd = function () {};
+  const onCnxAdd = function (start, end) {
+    console.log(start, end);
+    let newNode = {
+      title: "New Node",
+      link: "",
+      children: [],
+    };
+    let newProjectConfig = { ...projectConfig };
+    if (start === "container") {
+      newProjectConfig.nodes = [newNode, ...newProjectConfig.nodes];
+    } else if (end === "container") {
+      newProjectConfig.nodes.push(newNode);
+    } else {
+      let idx = getIndexes(start);
+      console.log(start, idx);
+      newProjectConfig.nodes.splice(Number(idx[0]) + 1, 0, newNode);
+    }
+    onChange(newProjectConfig);
+  };
 
   let connections = [];
   connections.push(
-    <Xarrow
-      {...arrowProps}
-      key={`arrow_container_Node_0`}
+    <Connection
+      key={"cnx_container_Node_0"}
       start={"container"}
       end={`Node_0`}
       startAnchor="top"
       endAnchor="top"
       color="gray"
-      labels={{
-        middle: (
-          <div style={{ position: "relative", top: "-15px" }}>
-            <Typography
-              sx={{
-                fontSize: 20,
-                fontWeight: "bold",
-                backgroundColor: "white",
-              }}
-              color="text.primary"
-              gutterBottom
-            >
-              {projectConfig.start}
-            </Typography>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-              }}
-            >
-              <AddCircleTwoTone
-                color="success"
-                fontSize="small"
-                style={{ backgroundColor: "white", borderRadius: "25px" }}
-              />
-            </div>
-          </div>
-        ),
-      }}
+      middleLabel={projectConfig.start}
+      onAdd={onCnxAdd}
     />
   );
   for (let i = 0; i < projectConfig.nodes.length - 1; i++) {
     connections.push(
-      <Xarrow
-        {...arrowProps}
-        key={`arrow_${i}_cnx_${i + 1}`}
+      <Connection
+        key={`cnx_Node_${i}_Node_${i + 1}`}
         start={`Node_${i}`}
         end={`Node_${i + 1}`}
         startAnchor="bottom"
         endAnchor="top"
-        labels={{
-          middle: (
-            <AddCircleTwoTone
-              color="success"
-              fontSize="small"
-              style={{ backgroundColor: "white", borderRadius: "25px" }}
-            />
-          ),
-        }}
+        onAdd={onCnxAdd}
       />
     );
   }
   connections.push(
-    <Xarrow
-      {...arrowProps}
-      key={`arrow_Node_${projectConfig.nodes.length - 1}_container`}
+    <Connection
+      key={`cnx_Node_${projectConfig.nodes.length - 1}_container`}
       start={`Node_${projectConfig.nodes.length - 1}`}
       end={"container"}
       startAnchor="bottom"
       endAnchor="bottom"
       color="gray"
-      labels={{
-        middle: (
-          <div style={{ position: "relative", top: "15px" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-              }}
-            >
-              <AddCircleTwoTone
-                color="success"
-                fontSize="small"
-                style={{ backgroundColor: "white", borderRadius: "25px" }}
-              />
-            </div>
-            <Typography
-              sx={{
-                fontSize: 20,
-                fontWeight: "bold",
-                backgroundColor: "white",
-              }}
-              color="text.primary"
-              gutterBottom
-            >
-              {projectConfig.end}
-            </Typography>
-          </div>
-        ),
-      }}
+      middleLabel={projectConfig.end}
+      onAdd={onCnxAdd}
     />
   );
   return (
