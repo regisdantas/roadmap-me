@@ -134,7 +134,7 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     />
   );
   return (
-      <div className="container" id="container">
+      <div className="container" id="container" style={{marginBotton: '0px'}}>
         <Xwrapper>
           {connections}
           {projectConfig.nodes.map((layerNode, layerNumber) => {

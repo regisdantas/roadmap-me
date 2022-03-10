@@ -5,9 +5,17 @@ ul {
 }
 
 .mainBody {
-  position: 'fixed';
-  top: 45px;
-  bottom: 45px;
+  position: absolute;
+  top: 80px;
+  bottom: 0px;
   width: 100%;
-  /* border: 1px solid blue; */
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  flex: 1;
+  height: fit-content;
+  min-height: 80%;
+
+  /* border: 1px solid rgb(0, 255, 34); */
 }
