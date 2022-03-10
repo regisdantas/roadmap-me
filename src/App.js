@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Roadmap from "./components/Roadmap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ToolBar from "./components/ToolBar";
 import ContentView from "./components/ContentView";
+import structuredClone from '@ungap/structured-clone';
 import projectConfigFile from "./test.json";
-import GoogleDrive from './GoogleDrive.js'
+import GoogleDrive from "./GoogleDrive.js";
 import "./App.css";
 
 const startProject = {
@@ -22,7 +23,7 @@ const startProject = {
 };
 
 function App() {
-  const [projectConfig, setProjectConfig] = React.useState(projectConfigFile);
+  const [projectConfig, setProjectConfig] = React.useState(structuredClone(startProject));
   const [contentViewState, setContentViewState] = React.useState(false);
   const [contentViewContent, setContentViewContent] = React.useState("");
 
@@ -31,28 +32,36 @@ function App() {
     toggleContentView(true);
   }
 
-  function onOpenFile(e) {
+  function onNewProject() {
+    setProjectConfig(structuredClone(startProject));
+  }
+
+  function onOpenLocalFile(e) {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
-    fileReader.onload = e => {
-      setProjectConfig(JSON.parse(e.target.result));
+    fileReader.onload = (e) => {
+      setProjectConfig(structuredClone(JSON.parse(e.target.result)));
     };
-  };
+    e.target.value = null;
+  }
 
   function toggleContentView(state) {
     setContentViewState(state);
-  };
+  }
 
   function onProjectChange(newProjectConfig) {
-    setProjectConfig(newProjectConfig);
+    setProjectConfig(structuredClone(newProjectConfig));
   }
 
   return (
     <div className="App">
       <Header />
-      <ToolBar projectName={projectConfig.projectName} onOpenFile={onOpenFile}/>
+      <ToolBar
+        projectConfig={projectConfig}
+        onNewProject={() => onNewProject()}
+        onOpenLocalFile={onOpenLocalFile}
+      />
       <div className="mainBody">
-        
         <Roadmap
           projectConfig={projectConfig}
           onChange={onProjectChange}

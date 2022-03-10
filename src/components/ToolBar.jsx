@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { AppBar, Toolbar, TextField, IconButton, Input } from "@mui/material";
+import { AppBar, Toolbar, TextField, IconButton } from "@mui/material";
 import {
   BackupTableTwoTone,
   SaveTwoTone,
@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-function ToolBar({ projectName, onOpenFile }) {
+function ToolBar({ projectConfig, onNewProject, onSaveProject, onOpenLocalFile }) {
   return (
     <AppBar position="fixed" sx={{ top: "48px", zIndex: "2" }}>
       <Toolbar
@@ -54,7 +54,7 @@ function ToolBar({ projectName, onOpenFile }) {
                 margin: "2px 5px 0px",
                 padding: "0px 5px 0px",
               }}
-              defaultValue={projectName}
+              defaultValue={projectConfig.projectName}
             ></TextField>
             <IconButton
               size="small"
@@ -62,6 +62,7 @@ function ToolBar({ projectName, onOpenFile }) {
               color="primary"
               aria-label="check"
               sx={{ mr: 0 }}
+              onClick={() => onNewProject()}
             >
               <FeedTwoTone />
             </IconButton>
@@ -73,7 +74,7 @@ function ToolBar({ projectName, onOpenFile }) {
               component="label"
             >
               <FolderOpenTwoTone />
-              <input type="file" hidden onChange={(e) => onOpenFile(e)} />
+              <input type="file" hidden onChange={(e) => onOpenLocalFile(e)} />
             </IconButton>
             <IconButton
               size="small"
@@ -81,6 +82,7 @@ function ToolBar({ projectName, onOpenFile }) {
               color="success"
               aria-label="check"
               sx={{ mr: 0 }}
+              onClick={() => onSaveProject()}
             >
               <SaveTwoTone />
             </IconButton>

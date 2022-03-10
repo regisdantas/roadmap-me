@@ -19,33 +19,29 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
   }
 
   function onNodeAdd(nodeID) {
-    let newProjectConfig = { ...projectConfig };
-    let parentNode = { children: newProjectConfig.nodes };
     const idxs = getIndexes(nodeID);
     if (idxs.length === 0) {
       return;
     }
+    let parentNode = { children: projectConfig.nodes };
     idxs.map((idx) => {
       parentNode = parentNode.children[idx];
     });
-  
     parentNode.children.push(newNode);
-
-    onChange(newProjectConfig);
+    onChange(projectConfig);
   }
 
   const onNodeDelete = function (nodeID) {
-    let newProjectConfig = { ...projectConfig };
-    let parentNode = { children: newProjectConfig.nodes };
     const idxs = getIndexes(nodeID);
-    if (idxs.length === 0 || newProjectConfig.nodes <= 1) {
+    if (idxs.length === 0 || projectConfig.nodes <= 1) {
       return;
     }
+    let parentNode = { children: projectConfig.nodes };
     for (let i = 0; i < idxs.length - 1; i++) {
       parentNode = parentNode.children[idxs[i]];
     }
     parentNode.children.splice(idxs[idxs.length - 1], 1);
-    onChange(newProjectConfig);
+    onChange(projectConfig);
   };
 
   const onNodeCheck = function (nodeID) {
@@ -53,16 +49,15 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
   };
 
   const onCnxAdd = function (start, end) {
-    let newProjectConfig = { ...projectConfig };
     if (start === "container") {
-      newProjectConfig.nodes = [newNode, ...newProjectConfig.nodes];
+      projectConfig.nodes = [newNode, ...projectConfig.nodes];
     } else if (end === "container") {
-      newProjectConfig.nodes.push(newNode);
+      projectConfig.nodes.push(newNode);
     } else {
       let idx = getIndexes(start);
-      newProjectConfig.nodes.splice(Number(idx[0]) + 1, 0, newNode);
+      projectConfig.nodes.splice(Number(idx[0]) + 1, 0, newNode);
     }
-    onChange(newProjectConfig);
+    onChange(projectConfig);
   };
 
   let connections = [];
