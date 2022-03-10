@@ -5,7 +5,7 @@ import { useXarrow } from "react-xarrows";
 import {
   CheckCircleTwoTone,
   AddCircleTwoTone,
-  DeleteTwoTone
+  DeleteTwoTone,
 } from "@mui/icons-material";
 
 import { Paper, Typography, IconButton } from "@mui/material";
@@ -158,7 +158,11 @@ function Node({
           id={nodeID}
           variant="outlined"
           sx={{
-            backgroundColor: node.checked?"gray":(level > 0 ? "yellow" : "gold"),
+            backgroundColor: node.checked
+              ? "gray"
+              : level > 0
+              ? "yellow"
+              : "gold",
             "&:hover": {
               backgroundColor: "orange",
             },
@@ -168,10 +172,24 @@ function Node({
             padding: "5px 10px 0px",
             border: "3px solid black",
           }}
-          onClick={() => onClick(node.checked, node.title, atob(node.content), () => onCheck(nodeID), (title) => onChangeNodeTitle(nodeID, title), (body) => onChangeNodeBody(nodeID, body))}
+          onClick={() => {
+            onClick(
+              node.checked,
+              node.title,
+              atob(node.content),
+              () => onCheck(nodeID),
+              (title) => onChangeNodeTitle(nodeID, title),
+              (body) => onChangeNodeBody(nodeID, body)
+            );
+          }}
         >
           <Typography
-            sx={{ fontSize: 14, fontWeight: "bold", textAlign: "center", textDecoration: node.checked?"line-through":"none" }}
+            sx={{
+              fontSize: 14,
+              fontWeight: "bold",
+              textAlign: "center",
+              textDecoration: node.checked ? "line-through" : "none",
+            }}
             color="text.primary"
             gutterBottom
           >

@@ -14,7 +14,7 @@ const theme = createTheme({
 function Header(props) {
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="fixed" top="0px" sx={{ zIndex: "2"}}>
+      <AppBar position="fixed" top="0px" sx={{ zIndex: "2" }}>
         <Toolbar
           variant="dense"
           sx={{

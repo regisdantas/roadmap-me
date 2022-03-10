@@ -1,20 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Button } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import ReactMarkdown from "react-markdown";
 import "./ContentView.css";
 
 import { Done, Edit } from "@mui/icons-material";
 
-function ContentView({contentViewCtrl, toggleContentView}) {
-  console.log(contentViewCtrl.checked);
+function ContentView({
+  contentViewCtrl,
+  contentViewCallbacks,
+  toggleContentView,
+}) {
+  const [bodyField, setBodyField] = React.useState({
+    content: contentViewCtrl.body,
+    isEditing: false,
+  });
   return (
     <div>
       <Drawer
         anchor="right"
         open={contentViewCtrl.state}
-        onClose={() => toggleContentView(false)}
+        onClose={() => {
+          setBodyField({
+            content: "",
+            isEditing: false,
+          });
+          toggleContentView(false);
+        }}
       >
         <Box sx={{ width: "50vw" }} role="presentation">
           <div
@@ -34,11 +47,11 @@ function ContentView({contentViewCtrl, toggleContentView}) {
                 size="small"
                 sx={{ height: "24px", fontSize: "12px" }}
                 variant="contained"
-                color={contentViewCtrl.checked?"error":"success"}
+                color={contentViewCtrl.checked ? "error" : "success"}
                 startIcon={<Done sx={{ padding: "0px 0px 3px" }} />}
-                onClick={() => contentViewCtrl.onCheckToggle()}
+                onClick={() => contentViewCallbacks.onCheckToggle()}
               >
-                {contentViewCtrl.checked?"Mark as Pending":"Mark as Done"}
+                {contentViewCtrl.checked ? "Mark as Pending" : "Mark as Done"}
               </Button>
               <Button
                 size="small"
@@ -50,18 +63,49 @@ function ContentView({contentViewCtrl, toggleContentView}) {
                 }}
                 variant="contained"
                 startIcon={<Edit sx={{ padding: "0px 0px 3px" }} />}
+                onClick={() => {
+                  if (bodyField.isEditing) {
+                    contentViewCallbacks.onChangeBody(bodyField.content);
+                    setBodyField({
+                      ...bodyField,
+                      isEditing: false,
+                    });
+                  } else {
+                    setBodyField({
+                      content: contentViewCtrl.body,
+                      isEditing: true,
+                    });
+                  }
+                }}
               >
                 Edit
               </Button>
             </div>
-              <h1
-                contentEditable="true"
-                onBlur={(e) => contentViewCtrl.onChangeTitle(e.currentTarget.textContent)}
-              >
-                {contentViewCtrl.title}
-              </h1>
+            <h1
+              contentEditable="true"
+              onBlur={(e) =>
+                contentViewCallbacks.onChangeTitle(e.currentTarget.textContent)
+              }
+            >
+              {contentViewCtrl.title}
+            </h1>
             <div style={{ padding: "0 4px 0" }}>
-              <ReactMarkdown>{contentViewCtrl.body}</ReactMarkdown>
+              {bodyField.isEditing ? (
+                <TextField
+                  variant="outlined"
+                  multiline
+                  sx={{ width: "100%", minHeight: "400px" }}
+                  value={bodyField.content}
+                  onChange={(e) =>
+                    setBodyField({
+                      content: e.target.value,
+                      isEditing: bodyField.isEditing,
+                    })
+                  }
+                />
+              ) : (
+                <ReactMarkdown>{contentViewCtrl.body}</ReactMarkdown>
+              )}
             </div>
           </div>
         </Box>

@@ -45,7 +45,6 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
   };
 
   const onNodeCheck = function (nodeID) {
-    console.log("Check node: ", nodeID);
     const idxs = getIndexes(nodeID);
     if (idxs.length === 0) {
       return;
@@ -80,7 +79,7 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     idxs.map((idx) => {
       node = node.children[idx];
     });
-    node.body = body;
+    node.content = btoa(body);
     onChange(projectConfig);
   };
 
@@ -134,30 +133,30 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     />
   );
   return (
-      <div className="container" id="container" style={{marginBotton: '0px'}}>
-        <Xwrapper>
-          {connections}
-          {projectConfig.nodes.map((layerNode, layerNumber) => {
-            return (
-              <div className="layer" key={`layerdiv_${layerNumber}`}>
-                <Node
-                  key={`Node_${layerNumber}`}
-                  nodeID={`Node_${layerNumber}`}
-                  node={layerNode}
-                  parent=""
-                  level={0}
-                  onAdd={onNodeAdd}
-                  onDelete={onNodeDelete}
-                  onCheck={onNodeCheck}
-                  onClick={onNodeClick}
-                  onChangeNodeTitle={onChangeNodeTitle}
-                  onChangeNodeBody={onChangeNodeBody}
-                />
-              </div>
-            );
-          })}
-        </Xwrapper>
-      </div>
+    <div className="container" id="container" style={{ marginBotton: "0px" }}>
+      <Xwrapper>
+        {connections}
+        {projectConfig.nodes.map((layerNode, layerNumber) => {
+          return (
+            <div className="layer" key={`layerdiv_${layerNumber}`}>
+              <Node
+                key={`Node_${layerNumber}`}
+                nodeID={`Node_${layerNumber}`}
+                node={layerNode}
+                parent=""
+                level={0}
+                onAdd={onNodeAdd}
+                onDelete={onNodeDelete}
+                onCheck={onNodeCheck}
+                onClick={onNodeClick}
+                onChangeNodeTitle={onChangeNodeTitle}
+                onChangeNodeBody={onChangeNodeBody}
+              />
+            </div>
+          );
+        })}
+      </Xwrapper>
+    </div>
   );
 }
 

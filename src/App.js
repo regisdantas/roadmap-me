@@ -23,19 +23,27 @@ const startProject = {
   ],
 };
 
+const initiaContentView = {
+  state: false,
+  title: "",
+  body: "",
+  checked: false,
+};
+
 function App() {
   const [projectConfig, setProjectConfig] = React.useState(
     structuredClone(startProject)
   );
-  const [contentViewCtrl, setContentViewCtrl] = React.useState({
-    state: false,
-    title: "",
-    body: "",
-    checked: false,
+  const [contentViewCtrl, setContentViewCtrl] = React.useState(
+    structuredClone(initiaContentView)
+  );
+
+  const [contentViewCallbacks, setContentViewCallbacks] = React.useState({
     onCheckToggle: () => {},
     onChangeTitle: () => {},
     onChangeBody: () => {},
   });
+
   const [snackBar, setSnackBar] = React.useState({
     state: false,
     message: "",
@@ -60,11 +68,16 @@ function App() {
     onChangeTitle,
     onChangeBody
   ) {
-    setContentViewCtrl({
-      state: true,
-      checked: checked,
-      title: title,
-      body: body,
+    setContentViewCtrl(
+      structuredClone({
+        state: true,
+        checked: checked,
+        title: title,
+        body: body,
+      })
+    );
+
+    setContentViewCallbacks({
       onCheckToggle: onCheckToggle,
       onChangeTitle: onChangeTitle,
       onChangeBody: onChangeBody,
@@ -138,17 +151,19 @@ function App() {
         });
       })
       .catch((err) => {
-        console.log(err);
         onSnackBarOpen(`Failed to save file: ${err.message}.`, "error");
       });
   }
 
   function toggleContentView(state) {
-    setContentViewCtrl({ ...contentViewCtrl, state: state });
+    setContentViewCtrl(structuredClone({ ...contentViewCtrl, state: state }));
   }
 
   function onProjectChange(newProjectConfig) {
     setProjectConfig(structuredClone(newProjectConfig));
+    if (contentViewCtrl.state) {
+      setContentViewCtrl(structuredClone({ ...contentViewCtrl }));
+    }
   }
 
   return (
@@ -170,6 +185,7 @@ function App() {
         ></Roadmap>
         <ContentView
           contentViewCtrl={contentViewCtrl}
+          contentViewCallbacks={contentViewCallbacks}
           toggleContentView={(state) => toggleContentView(state)}
         ></ContentView>
       </div>
