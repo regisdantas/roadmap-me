@@ -6,8 +6,7 @@ import ToolBar from "./components/ToolBar";
 import ContentView from "./components/ContentView";
 import structuredClone from "@ungap/structured-clone";
 
-import { Snackbar, IconButton } from "@mui/material";
-import { Close } from "@mui/icons-material";
+import { Snackbar, Alert } from "@mui/material";
 // import GoogleDrive from "./GoogleDrive.js";
 import "./App.css";
 
@@ -33,30 +32,17 @@ function App() {
     title: "",
     body: "",
   });
-  const [snackBar, setSnackBar] = React.useState({ state: false, message: "" });
+  const [snackBar, setSnackBar] = React.useState({ state: false, message: "", type: "info" });
 
-  const snackBarContent = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={() => onSnackBarClose()}
-      >
-        <Close fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
-
-  function onSnackBarOpen(message) {
-    setSnackBar({ state: true, message: message });
+  function onSnackBarOpen(message, type) {
+    setSnackBar({ ...snackBar, state: true, message: message, type: type});
   }
 
   const onSnackBarClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setSnackBar({ state: false, message: "" });
+    setSnackBar({ ...snackBar, state: false});
   };
   function loadNodeContentView(node) {
     setContentViewContent({ title: node.title, body: atob(node.content) });
@@ -68,11 +54,14 @@ function App() {
   }
 
   function onOpenLocalFile(e) {
+    const fileName = e.target.files[0];
     const fileReader = new FileReader();
-    fileReader.readAsText(e.target.files[0], "UTF-8");
-    fileReader.onload = (e) => {
+    fileReader.addEventListener("error", () => {
+      onSnackBarOpen(`Failed to open project file: ${fileName}`, "error");
+    });
+    fileReader.readAsText(fileName, "UTF-8").then((e) => {
       setProjectConfig(structuredClone(JSON.parse(e.target.result)));
-    };
+    });
     e.target.value = null;
   }
 
@@ -86,7 +75,7 @@ function App() {
     a.href = URL.createObjectURL(file);
     a.download = `${projectConfig.projectName}.json`;
     a.click();
-    onSnackBarOpen("File saved");
+    onSnackBarOpen("Project saved locally.", "success");
   }
 
   function onSaveAsLocalFile() {
@@ -107,12 +96,13 @@ function App() {
         file.createWritable().then((writer) => {
           writer.write(JSON.stringify(projectConfig, null, 2)).then(() => {
             writer.close();
+            onSnackBarOpen(`Project saved locally to file: ${file.name}.`, "success");
           });
         });
       })
       .catch((err) => {
         console.log(err);
-        onSnackBarOpen(`Failed to save file: ${err.message}`);
+        onSnackBarOpen(`Failed to save file: ${err.message}.`, "error");
       });
   }
 
@@ -151,9 +141,11 @@ function App() {
         open={snackBar.state}
         autoHideDuration={6000}
         onClose={onSnackBarClose}
-        message={snackBar.message}
-        action={snackBarContent}
-      />
+      >
+        <Alert onClose={onSnackBarClose} severity={snackBar.type} sx={{ width: "100%" }}>
+          {snackBar.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
