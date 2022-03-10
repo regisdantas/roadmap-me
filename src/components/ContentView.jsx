@@ -54,13 +54,12 @@ function ContentView(props) {
                 Edit
               </Button>
             </div>
-            <div
-              contenteditable="true"
-              onBlur={(e) => onChangeTitle(e.currentTarget.textContent)}
-              style={{ padding: "0 4px 0" }}
-            >
-              <h1> {props.content.title}</h1>
-            </div>
+              <h1
+                contentEditable="true"
+                onBlur={(e) => onChangeTitle(e.currentTarget.textContent)}
+              >
+                {props.content.title}
+              </h1>
             <div style={{ padding: "0 4px 0" }}>
               <ReactMarkdown>{props.content.body}</ReactMarkdown>
             </div>

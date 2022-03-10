@@ -54,14 +54,20 @@ function App() {
   }
 
   function onOpenLocalFile(e) {
-    const fileName = e.target.files[0];
+    const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.addEventListener("error", () => {
-      onSnackBarOpen(`Failed to open project file: ${fileName}`, "error");
+      onSnackBarOpen(`Failed to open project file: ${file.name}`, "error");
     });
-    fileReader.readAsText(fileName, "UTF-8").then((e) => {
-      setProjectConfig(structuredClone(JSON.parse(e.target.result)));
-    });
+    fileReader.readAsText(file, "UTF-8");
+    fileReader.onload = (e) => {
+      try{
+        const project = JSON.parse(e.target.result);
+        setProjectConfig(structuredClone(project));
+      } catch {
+        onSnackBarOpen(`Failed to read project: ${file.name}`, "error");
+      }
+    };
     e.target.value = null;
   }
 
