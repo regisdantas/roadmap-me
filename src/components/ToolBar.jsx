@@ -15,7 +15,13 @@ const styles = {
   },
 };
 
-function ToolBar({ projectConfig, onNewProject, onSaveProject, onOpenLocalFile }) {
+function ToolBar({
+  projectConfig,
+  onNewProject,
+  onSaveLocalFile,
+  onSaveAsLocalFile,
+  onOpenLocalFile,
+}) {
   return (
     <AppBar position="fixed" sx={{ top: "48px", zIndex: "2" }}>
       <Toolbar
@@ -74,7 +80,12 @@ function ToolBar({ projectConfig, onNewProject, onSaveProject, onOpenLocalFile }
               component="label"
             >
               <FolderOpenTwoTone />
-              <input type="file" hidden onChange={(e) => onOpenLocalFile(e)} />
+              <input
+                type="file"
+                accept=".json"
+                hidden
+                onChange={(e) => onOpenLocalFile(e)}
+              />
             </IconButton>
             <IconButton
               size="small"
@@ -82,7 +93,7 @@ function ToolBar({ projectConfig, onNewProject, onSaveProject, onOpenLocalFile }
               color="success"
               aria-label="check"
               sx={{ mr: 0 }}
-              onClick={() => onSaveProject()}
+              onClick={() => onSaveLocalFile()}
             >
               <SaveTwoTone />
             </IconButton>
@@ -92,6 +103,7 @@ function ToolBar({ projectConfig, onNewProject, onSaveProject, onOpenLocalFile }
               color="secondary"
               aria-label="check"
               sx={{ mr: 0 }}
+              onClick={() => onSaveAsLocalFile()}
             >
               <SaveAsTwoTone />
             </IconButton>

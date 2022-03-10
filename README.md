@@ -30,10 +30,14 @@
 
 ### ToDo
 
-*   [ ] **First ToDo** - ToDo 1 description.
-*   [ ] **Second ToDo** - ToDo 2 description.
-*   [ ] **Third ToDo** - ToDo 3 description.
-*   [ ] **Fourth ToDo** - ToDo 4 description.
+*   [ ] [H] **Edit Node Name** - Change node name in content view.
+*   [x] [H] **Save** - Download project file.
+*   [x] [H] **Save As** - Save project to file specific in local computer.
+*   [ ] [H] **Node Content MD Edit** - Be able to edit node markdown content in right drawer content view.
+*   [ ] [M] **Top-Menu** - Add links to buttons in top menu.
+*   [ ] [M] **Check Nodes** - Nodes can be checked (marked as done/achieved).
+*   [ ] [L] **Google Drive Integration** - Be able to Open/Save projects from/to Google Drive.
+
 ### License
 
 [MIT][license] © [Regis Dantas][author]

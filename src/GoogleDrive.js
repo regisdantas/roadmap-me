@@ -5,7 +5,8 @@ function GoogleDrive() {
   const [openPicker, data, authResponse] = useDrivePicker();
   const handleOpenPicker = () => {
     openPicker({
-      clientId: "940532588381-6nv1140qkdkrb3vabajct66fbs2b33tm.apps.googleusercontent.com",
+      clientId:
+        "940532588381-6nv1140qkdkrb3vabajct66fbs2b33tm.apps.googleusercontent.com",
       developerKey: "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",
       viewId: "DOCS",
       showUploadView: true,
