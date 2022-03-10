@@ -45,8 +45,44 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
   };
 
   const onNodeCheck = function (nodeID) {
-    console.log(nodeID);
+    console.log("Check node: ", nodeID);
+    const idxs = getIndexes(nodeID);
+    if (idxs.length === 0) {
+      return;
+    }
+    let node = { children: projectConfig.nodes };
+    idxs.map((idx) => {
+      node = node.children[idx];
+    });
+    node.checked = !node.checked;
+    onChange(projectConfig);
   };
+
+  const onChangeNodeTitle = function (nodeID, title) {
+    const idxs = getIndexes(nodeID);
+    if (idxs.length === 0) {
+      return;
+    }
+    let node = { children: projectConfig.nodes };
+    idxs.map((idx) => {
+      node = node.children[idx];
+    });
+    node.title=title;
+    onChange(projectConfig);
+  }
+
+  const onChangeNodeBody = function (nodeID, body) {
+    const idxs = getIndexes(nodeID);
+    if (idxs.length === 0) {
+      return;
+    }
+    let node = { children: projectConfig.nodes };
+    idxs.map((idx) => {
+      node = node.children[idx];
+    });
+    node.body=body;
+    onChange(projectConfig);
+  }
 
   const onCnxAdd = function (start, end) {
     if (start === "container") {
@@ -114,6 +150,8 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
                 onDelete={onNodeDelete}
                 onCheck={onNodeCheck}
                 onClick={onNodeClick}
+                onChangeNodeTitle={onChangeNodeTitle}
+                onChangeNodeBody={onChangeNodeBody}
               />
             </div>
           );

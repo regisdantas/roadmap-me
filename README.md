@@ -30,13 +30,16 @@
 
 ### ToDo
 
-*   [ ] [H] **Edit Node Name** - Change node name in content view.
+*   [x] [H] **Edit Node Name** - Change node name in content view.
 *   [x] [H] **Save** - Download project file.
 *   [x] [H] **Save As** - Save project to file specific in local computer.
 *   [ ] [H] **Node Content MD Edit** - Be able to edit node markdown content in right drawer content view.
 *   [ ] [M] **Top-Menu** - Add links to buttons in top menu.
-*   [ ] [M] **Check Nodes** - Nodes can be checked (marked as done/achieved).
+*   [ ] [M] **Start/End Labels** - Click and Edit Start and End Labels.
+*   [x] [M] **Check Nodes** - Nodes can be checked (marked as done/achieved).
+*   [ ] [M] **Check Branch** - All branch can be checked when node is checked (marked as done/achieved).
 *   [ ] [L] **Google Drive Integration** - Be able to Open/Save projects from/to Google Drive.
+*   [ ] [L] **Path Types** - Be able to set path types, (main, alternative).
 
 ### License
 

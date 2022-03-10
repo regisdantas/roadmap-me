@@ -27,10 +27,12 @@ function App() {
   const [projectConfig, setProjectConfig] = React.useState(
     structuredClone(startProject)
   );
-  const [contentViewState, setContentViewState] = React.useState(false);
-  const [contentViewContent, setContentViewContent] = React.useState({
+  const [contentViewCtrl, setContentViewCtrl] = React.useState({
+    state: false,
     title: "",
     body: "",
+    onChangeTitle: () => {},
+    onChangeBody: () => {},
   });
   const [snackBar, setSnackBar] = React.useState({ state: false, message: "", type: "info" });
 
@@ -45,9 +47,8 @@ function App() {
     }
     setSnackBar({ ...snackBar, state: false});
   };
-  function loadNodeContentView(node) {
-    setContentViewContent({ title: node.title, body: atob(node.content) });
-    toggleContentView(true);
+  function loadNodeContentView(title, body, onChangeTitle, onChangeBody) {
+    setContentViewCtrl({ state: true, title: title, body: body, onChangeTitle: onChangeTitle, onChangeBody: onChangeBody });
   }
 
   function onChangeProjectName(newProkectName) {
@@ -118,7 +119,7 @@ function App() {
   }
 
   function toggleContentView(state) {
-    setContentViewState(state);
+    setContentViewCtrl({ ...contentViewCtrl, state: state });
   }
 
   function onProjectChange(newProjectConfig) {
@@ -143,8 +144,7 @@ function App() {
           onNodeClick={loadNodeContentView}
         ></Roadmap>
         <ContentView
-          content={contentViewContent}
-          contentViewState={contentViewState}
+          contentViewCtrl={contentViewCtrl}
           toggleContentView={(state) => toggleContentView(state)}
         ></ContentView>
       </div>

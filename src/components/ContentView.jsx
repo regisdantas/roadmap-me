@@ -7,15 +7,13 @@ import "./ContentView.css";
 
 import { Done, Close, Edit } from "@mui/icons-material";
 
-function ContentView(props) {
-  function onChangeTitle() {}
-
+function ContentView({contentViewCtrl, toggleContentView}) {
   return (
     <div>
       <Drawer
         anchor="right"
-        open={props.contentViewState}
-        onClose={() => props.toggleContentView(false)}
+        open={contentViewCtrl.state}
+        onClose={() => toggleContentView(false)}
       >
         <Box sx={{ width: "50vw" }} role="presentation">
           <div
@@ -56,12 +54,12 @@ function ContentView(props) {
             </div>
               <h1
                 contentEditable="true"
-                onBlur={(e) => onChangeTitle(e.currentTarget.textContent)}
+                onBlur={(e) => contentViewCtrl.onChangeTitle(e.currentTarget.textContent)}
               >
-                {props.content.title}
+                {contentViewCtrl.title}
               </h1>
             <div style={{ padding: "0 4px 0" }}>
-              <ReactMarkdown>{props.content.body}</ReactMarkdown>
+              <ReactMarkdown>{contentViewCtrl.body}</ReactMarkdown>
             </div>
           </div>
         </Box>

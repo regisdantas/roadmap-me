@@ -5,7 +5,7 @@ import { useXarrow } from "react-xarrows";
 import {
   CheckCircleTwoTone,
   AddCircleTwoTone,
-  DeleteTwoTone,
+  DeleteTwoTone
 } from "@mui/icons-material";
 
 import { Paper, Typography, IconButton } from "@mui/material";
@@ -28,7 +28,12 @@ function Node({
   onAdd,
   onDelete,
   onCheck,
+  onChangeNodeTitle,
+  onChangeNodeBody,
 }) {
+  if (node.checked === undefined) {
+    node.checked = false;
+  }
   const updateXarrow = useXarrow();
   const nodeClass = level === 0 ? "mainNode" : "childNode";
   let leftChildren = [];
@@ -47,6 +52,8 @@ function Node({
           onAdd={onAdd}
           onDelete={onDelete}
           onCheck={onCheck}
+          onChangeNodeTitle={onChangeNodeTitle}
+          onChangeNodeBody={onChangeNodeBody}
         ></Node>
       );
       arrows.push(
@@ -151,7 +158,7 @@ function Node({
           id={nodeID}
           variant="outlined"
           sx={{
-            backgroundColor: "yellow",
+            backgroundColor: node.checked?"gray":(level > 0 ? "yellow" : "gold"),
             "&:hover": {
               backgroundColor: "orange",
             },
@@ -161,10 +168,10 @@ function Node({
             padding: "5px 10px 0px",
             border: "3px solid black",
           }}
-          onClick={() => onClick(node)}
+          onClick={() => onClick(node.title, atob(node.content), (title) => onChangeNodeTitle(nodeID, title), (body) => onChangeNodeBody(nodeID, body))}
         >
           <Typography
-            sx={{ fontSize: 14, fontWeight: "bold", textAlign: "center" }}
+            sx={{ fontSize: 14, fontWeight: "bold", textAlign: "center", textDecoration: node.checked?"line-through":"none" }}
             color="text.primary"
             gutterBottom
           >
