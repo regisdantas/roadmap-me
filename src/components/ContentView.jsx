@@ -5,9 +5,10 @@ import Drawer from "@mui/material/Drawer";
 import ReactMarkdown from "react-markdown";
 import "./ContentView.css";
 
-import { Done, Close, Edit } from "@mui/icons-material";
+import { Done, Edit } from "@mui/icons-material";
 
 function ContentView({contentViewCtrl, toggleContentView}) {
+  console.log(contentViewCtrl.checked);
   return (
     <div>
       <Drawer
@@ -33,10 +34,11 @@ function ContentView({contentViewCtrl, toggleContentView}) {
                 size="small"
                 sx={{ height: "24px", fontSize: "12px" }}
                 variant="contained"
-                color="success"
+                color={contentViewCtrl.checked?"error":"success"}
                 startIcon={<Done sx={{ padding: "0px 0px 3px" }} />}
+                onClick={() => contentViewCtrl.onCheckToggle()}
               >
-                Mark as Done
+                {contentViewCtrl.checked?"Mark as Pending":"Mark as Done"}
               </Button>
               <Button
                 size="small"

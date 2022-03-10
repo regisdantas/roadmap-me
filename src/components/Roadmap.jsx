@@ -33,7 +33,7 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
 
   const onNodeDelete = function (nodeID) {
     const idxs = getIndexes(nodeID);
-    if (idxs.length === 0 || projectConfig.nodes <= 1) {
+    if (idxs.length === 0 || projectConfig.nodes.length <= 1) {
       return;
     }
     let parentNode = { children: projectConfig.nodes };
@@ -67,9 +67,9 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     idxs.map((idx) => {
       node = node.children[idx];
     });
-    node.title=title;
+    node.title = title;
     onChange(projectConfig);
-  }
+  };
 
   const onChangeNodeBody = function (nodeID, body) {
     const idxs = getIndexes(nodeID);
@@ -80,9 +80,9 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     idxs.map((idx) => {
       node = node.children[idx];
     });
-    node.body=body;
+    node.body = body;
     onChange(projectConfig);
-  }
+  };
 
   const onCnxAdd = function (start, end) {
     if (start === "container") {
@@ -134,30 +134,30 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     />
   );
   return (
-    <div className="container" id="container">
-      <Xwrapper>
-        {connections}
-        {projectConfig.nodes.map((layerNode, layerNumber) => {
-          return (
-            <div className="layer" key={`layerdiv_${layerNumber}`}>
-              <Node
-                key={`Node_${layerNumber}`}
-                nodeID={`Node_${layerNumber}`}
-                node={layerNode}
-                parent=""
-                level={0}
-                onAdd={onNodeAdd}
-                onDelete={onNodeDelete}
-                onCheck={onNodeCheck}
-                onClick={onNodeClick}
-                onChangeNodeTitle={onChangeNodeTitle}
-                onChangeNodeBody={onChangeNodeBody}
-              />
-            </div>
-          );
-        })}
-      </Xwrapper>
-    </div>
+      <div className="container" id="container">
+        <Xwrapper>
+          {connections}
+          {projectConfig.nodes.map((layerNode, layerNumber) => {
+            return (
+              <div className="layer" key={`layerdiv_${layerNumber}`}>
+                <Node
+                  key={`Node_${layerNumber}`}
+                  nodeID={`Node_${layerNumber}`}
+                  node={layerNode}
+                  parent=""
+                  level={0}
+                  onAdd={onNodeAdd}
+                  onDelete={onNodeDelete}
+                  onCheck={onNodeCheck}
+                  onClick={onNodeClick}
+                  onChangeNodeTitle={onChangeNodeTitle}
+                  onChangeNodeBody={onChangeNodeBody}
+                />
+              </div>
+            );
+          })}
+        </Xwrapper>
+      </div>
   );
 }
 

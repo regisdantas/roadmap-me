@@ -31,28 +31,50 @@ function App() {
     state: false,
     title: "",
     body: "",
+    checked: false,
+    onCheckToggle: () => {},
     onChangeTitle: () => {},
     onChangeBody: () => {},
   });
-  const [snackBar, setSnackBar] = React.useState({ state: false, message: "", type: "info" });
-
+  const [snackBar, setSnackBar] = React.useState({
+    state: false,
+    message: "",
+    type: "info",
+  });
 
   function onSnackBarOpen(message, type) {
-    setSnackBar({ ...snackBar, state: true, message: message, type: type});
+    setSnackBar({ ...snackBar, state: true, message: message, type: type });
   }
 
   const onSnackBarClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setSnackBar({ ...snackBar, state: false});
+    setSnackBar({ ...snackBar, state: false });
   };
-  function loadNodeContentView(title, body, onChangeTitle, onChangeBody) {
-    setContentViewCtrl({ state: true, title: title, body: body, onChangeTitle: onChangeTitle, onChangeBody: onChangeBody });
+  function loadNodeContentView(
+    checked,
+    title,
+    body,
+    onCheckToggle,
+    onChangeTitle,
+    onChangeBody
+  ) {
+    setContentViewCtrl({
+      state: true,
+      checked: checked,
+      title: title,
+      body: body,
+      onCheckToggle: onCheckToggle,
+      onChangeTitle: onChangeTitle,
+      onChangeBody: onChangeBody,
+    });
   }
 
   function onChangeProjectName(newProkectName) {
-    setProjectConfig(structuredClone({...projectConfig, projectName: newProkectName}));
+    setProjectConfig(
+      structuredClone({ ...projectConfig, projectName: newProkectName })
+    );
   }
 
   function onNewProject() {
@@ -67,7 +89,7 @@ function App() {
     });
     fileReader.readAsText(file, "UTF-8");
     fileReader.onload = (e) => {
-      try{
+      try {
         const project = JSON.parse(e.target.result);
         setProjectConfig(structuredClone(project));
       } catch {
@@ -108,7 +130,10 @@ function App() {
         file.createWritable().then((writer) => {
           writer.write(JSON.stringify(projectConfig, null, 2)).then(() => {
             writer.close();
-            onSnackBarOpen(`Project saved locally to file: ${file.name}.`, "success");
+            onSnackBarOpen(
+              `Project saved locally to file: ${file.name}.`,
+              "success"
+            );
           });
         });
       })
@@ -154,7 +179,11 @@ function App() {
         autoHideDuration={6000}
         onClose={onSnackBarClose}
       >
-        <Alert onClose={onSnackBarClose} severity={snackBar.type} sx={{ width: "100%" }}>
+        <Alert
+          onClose={onSnackBarClose}
+          severity={snackBar.type}
+          sx={{ width: "100%" }}
+        >
           {snackBar.message}
         </Alert>
       </Snackbar>

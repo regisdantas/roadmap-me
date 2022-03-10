@@ -168,7 +168,7 @@ function Node({
             padding: "5px 10px 0px",
             border: "3px solid black",
           }}
-          onClick={() => onClick(node.title, atob(node.content), (title) => onChangeNodeTitle(nodeID, title), (body) => onChangeNodeBody(nodeID, body))}
+          onClick={() => onClick(node.checked, node.title, atob(node.content), () => onCheck(nodeID), (title) => onChangeNodeTitle(nodeID, title), (body) => onChangeNodeBody(nodeID, body))}
         >
           <Typography
             sx={{ fontSize: 14, fontWeight: "bold", textAlign: "center", textDecoration: node.checked?"line-through":"none" }}

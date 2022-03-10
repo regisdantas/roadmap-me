@@ -1,17 +1,19 @@
 .container {
-  /* border: 1px solid rgb(255, 0, 0); */
-  flex: 1;
-  padding: 150px 0px 150px;
   display: flex;
   flex-flow: column;
+  justify-content: center;
+  flex: 1;
+  width: fit-content;
+  border: 1px solid rgb(255, 0, 0);
+  padding: 150px 0px 150px;
   height: 90%;
 }
 
 .layer {
-  /* border: 1px solid rgb(0, 4, 255); */
   flex: 1;
-  display: flex;
   flex-direction: row;
   justify-content: center;
+  display: flex;
+  border: 1px solid rgb(0, 4, 255);
   padding: 10px;
 }
