@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Roadmap from "./components/Roadmap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -34,6 +34,7 @@ function App() {
   });
   const [snackBar, setSnackBar] = React.useState({ state: false, message: "", type: "info" });
 
+
   function onSnackBarOpen(message, type) {
     setSnackBar({ ...snackBar, state: true, message: message, type: type});
   }
@@ -47,6 +48,10 @@ function App() {
   function loadNodeContentView(node) {
     setContentViewContent({ title: node.title, body: atob(node.content) });
     toggleContentView(true);
+  }
+
+  function onChangeProjectName(newProkectName) {
+    setProjectConfig(structuredClone({...projectConfig, projectName: newProkectName}));
   }
 
   function onNewProject() {
@@ -124,8 +129,9 @@ function App() {
     <div className="App">
       <Header />
       <ToolBar
-        projectConfig={projectConfig}
-        onNewProject={() => onNewProject()}
+        projectName={projectConfig.projectName}
+        onChangeProjectName={onChangeProjectName}
+        onNewProject={onNewProject}
         onOpenLocalFile={onOpenLocalFile}
         onSaveLocalFile={onSaveLocalFile}
         onSaveAsLocalFile={onSaveAsLocalFile}

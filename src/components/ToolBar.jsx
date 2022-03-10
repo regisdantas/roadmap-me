@@ -16,12 +16,18 @@ const styles = {
 };
 
 function ToolBar({
-  projectConfig,
+  projectName,
+  onTypeProjectName,
+  onChangeProjectName,
   onNewProject,
   onSaveLocalFile,
   onSaveAsLocalFile,
   onOpenLocalFile,
 }) {
+  const [projectNameInput, setProjectNameInput] = React.useState({ value: projectName, focus: false});
+  if (projectName !== projectNameInput.value && !projectNameInput.focus) {
+    setProjectNameInput({ ...projectNameInput, value: projectName})
+  }
   return (
     <AppBar position="fixed" sx={{ top: "48px", zIndex: "2" }}>
       <Toolbar
@@ -60,7 +66,11 @@ function ToolBar({
                 margin: "2px 5px 0px",
                 padding: "0px 5px 0px",
               }}
-              defaultValue={projectConfig.projectName}
+              value={projectNameInput.value}
+              onChange={(e) => setProjectNameInput({ value: e.target.value, focus: true})}
+              onFocus={() => setProjectNameInput({ ...projectNameInput, focus: true})}
+              onBlur={(e) => { onChangeProjectName(e.target.value); setProjectNameInput({...projectNameInput, focus: false})}}
+              required={true}
             ></TextField>
             <IconButton
               size="small"
