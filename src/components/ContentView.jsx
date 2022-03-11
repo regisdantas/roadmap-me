@@ -3,26 +3,70 @@ import PropTypes from "prop-types";
 import { Box, Button, TextField } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkEmoji from "remark-emoji";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import remarkToc from "remark-toc";
+import remarkBreaks from "remark-breaks";
+// import remarkMdx from "remark-mdx";
+// import remarkPrism from "remark-prism";
+
+import "katex/dist/katex.min.css";
 import "./ContentView.css";
 
-import { Done, Edit } from "@mui/icons-material";
+import { Done, Edit, Save } from "@mui/icons-material";
 
 function ContentView({
   contentViewCtrl,
   contentViewCallbacks,
   toggleContentView,
 }) {
-  const [bodyField, setBodyField] = React.useState({
-    content: contentViewCtrl.body,
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height,
+    };
+  }
+  const [windowDimensions, setWindowDimensions] = React.useState(
+    getWindowDimensions()
+  );
+
+  const [contentView, setContentView] = React.useState({
+    title: contentViewCtrl.title,
+    content: contentViewCtrl.content,
     isEditing: false,
   });
+
+  React.useEffect(() => {
+    if (contentViewCtrl.state) {
+      setContentView({
+        ...contentView,
+        title: contentViewCtrl.title,
+        content: contentViewCtrl.content,
+      });
+    }
+  }, [contentViewCtrl.state]);
+
+  React.useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div>
       <Drawer
         anchor="right"
         open={contentViewCtrl.state}
         onClose={() => {
-          setBodyField({
+          setContentView({
+            title: "",
             content: "",
             isEditing: false,
           });
@@ -64,15 +108,9 @@ function ContentView({
                 variant="contained"
                 startIcon={<Edit sx={{ padding: "0px 0px 3px" }} />}
                 onClick={() => {
-                  if (bodyField.isEditing) {
-                    contentViewCallbacks.onChangeBody(bodyField.content);
-                    setBodyField({
-                      ...bodyField,
-                      isEditing: false,
-                    });
-                  } else {
-                    setBodyField({
-                      content: contentViewCtrl.body,
+                  if (!contentView.isEditing) {
+                    setContentView({
+                      ...contentView,
                       isEditing: true,
                     });
                   }
@@ -81,31 +119,111 @@ function ContentView({
                 Edit
               </Button>
             </div>
+            <h1>{contentView.title}</h1>
+            <div style={{ padding: "0 4px 0" }}>
+              {
+                <ReactMarkdown
+                  children={contentView.content}
+                  remarkPlugins={[
+                    [
+                      remarkEmoji,
+                      {
+                        padSpaceAfter: false,
+                        emoticon: true,
+                      },
+                    ],
+                    [remarkToc, { tight: true, ordered: true }],
+                    remarkGfm,
+                    remarkMath,
+                    rehypeKatex,
+                    remarkBreaks,
+                    // remarkPrism,
+                    remarkFrontmatter,
+                    // remarkMdx
+                  ]}
+                />
+              }
+            </div>
+          </div>
+        </Box>
+      </Drawer>
+      <Drawer
+        anchor="left"
+        BackdropProps={{ style: { opacity: 0 } }}
+        open={contentView.isEditing}
+        onClose={() => {
+          setContentView({
+            ...contentView,
+            isEditing: false,
+          });
+        }}
+      >
+        <Box sx={{ width: "50vw", height: "100%" }} role="presentation">
+          <div
+            className="contentView"
+            style={{ margin: "20px 20px 20px", padding: "0px 20px 0px" }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "100%",
+                margin: "0px 0px 30px",
+              }}
+            >
+              <Button
+                size="small"
+                color="success"
+                sx={{
+                  height: "24px",
+                  fontSize: "12px",
+                }}
+                variant="contained"
+                startIcon={<Save sx={{ padding: "0px 0px 3px" }} />}
+                onClick={() => {
+                  contentViewCallbacks.onSave(
+                    contentView.title,
+                    contentView.content
+                  );
+                  setContentView({
+                    ...contentView,
+                    isEditing: false,
+                  });
+                }}
+              >
+                Save
+              </Button>
+            </div>
             <h1
               contentEditable="true"
-              onBlur={(e) =>
-                contentViewCallbacks.onChangeTitle(e.currentTarget.textContent)
-              }
+              onBlur={(e) => {
+                setContentView({
+                  ...contentView,
+                  title: e.currentTarget.innerText,
+                });
+              }}
             >
-              {contentViewCtrl.title}
+              {contentView.title}
             </h1>
             <div style={{ padding: "0 4px 0" }}>
-              {bodyField.isEditing ? (
-                <TextField
-                  variant="outlined"
-                  multiline
-                  sx={{ width: "100%", minHeight: "400px" }}
-                  value={bodyField.content}
-                  onChange={(e) =>
-                    setBodyField({
-                      content: e.target.value,
-                      isEditing: bodyField.isEditing,
-                    })
-                  }
-                />
-              ) : (
-                <ReactMarkdown>{contentViewCtrl.body}</ReactMarkdown>
-              )}
+              <textarea
+                style={{
+                  width: "100%",
+                  height: `${windowDimensions.height - 150}px`,
+                  boxSizing: "border-box",
+                  resize: "none",
+                  fontSize: "16px",
+                  padding: "0px 10px 0px",
+                }}
+                value={contentView.content}
+                onChange={(e) =>
+                  setContentView({
+                    ...contentView,
+                    content: e.target.value,
+                  })
+                }
+              />
             </div>
           </div>
         </Box>

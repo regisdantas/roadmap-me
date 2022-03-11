@@ -28,8 +28,7 @@ function Node({
   onAdd,
   onDelete,
   onCheck,
-  onChangeNodeTitle,
-  onChangeNodeBody,
+  onChangeNode,
 }) {
   if (node.checked === undefined) {
     node.checked = false;
@@ -52,8 +51,7 @@ function Node({
           onAdd={onAdd}
           onDelete={onDelete}
           onCheck={onCheck}
-          onChangeNodeTitle={onChangeNodeTitle}
-          onChangeNodeBody={onChangeNodeBody}
+          onChangeNode={onChangeNode}
         ></Node>
       );
       arrows.push(
@@ -78,6 +76,7 @@ function Node({
           onAdd={onAdd}
           onDelete={onDelete}
           onCheck={onCheck}
+          onChangeNode={onChangeNode}
         ></Node>
       );
       arrows.push(
@@ -104,8 +103,8 @@ function Node({
             flexDirection: "row",
             justifyContent: "right",
             position: "relative",
-            top: "10px",
-            right: "-10px",
+            top: "16px",
+            right: "-12px",
           }}
         >
           <IconButton
@@ -178,8 +177,7 @@ function Node({
               node.title,
               atob(node.content),
               () => onCheck(nodeID),
-              (title) => onChangeNodeTitle(nodeID, title),
-              (body) => onChangeNodeBody(nodeID, body)
+              (newTitle, newContent) => onChangeNode(nodeID, newTitle, newContent)
             );
           }}
         >

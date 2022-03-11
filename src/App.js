@@ -26,7 +26,7 @@ const startProject = {
 const initiaContentView = {
   state: false,
   title: "",
-  body: "",
+  content: "",
   checked: false,
 };
 
@@ -40,8 +40,7 @@ function App() {
 
   const [contentViewCallbacks, setContentViewCallbacks] = React.useState({
     onCheckToggle: () => {},
-    onChangeTitle: () => {},
-    onChangeBody: () => {},
+    onSave: () => {},
   });
 
   const [snackBar, setSnackBar] = React.useState({
@@ -63,24 +62,23 @@ function App() {
   function loadNodeContentView(
     checked,
     title,
-    body,
+    content,
     onCheckToggle,
-    onChangeTitle,
-    onChangeBody
+    onSave
   ) {
     setContentViewCtrl(
       structuredClone({
         state: true,
         checked: checked,
         title: title,
-        body: body,
+        content: content,
       })
     );
 
     setContentViewCallbacks({
       onCheckToggle: onCheckToggle,
-      onChangeTitle: onChangeTitle,
-      onChangeBody: onChangeBody,
+      onSave: onSave,
+
     });
   }
 

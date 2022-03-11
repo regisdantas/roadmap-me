@@ -14,7 +14,7 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
 
   function getIndexes(nodeID) {
     const str = nodeID.replace("Node_", "");
-    const idxs = str.split(".");
+    const idxs = str.split(".").map((idx) => parseInt(idx));
     return idxs;
   }
 
@@ -33,7 +33,10 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
 
   const onNodeDelete = function (nodeID) {
     const idxs = getIndexes(nodeID);
-    if (idxs.length === 0 || projectConfig.nodes.length <= 1) {
+    if (
+      idxs.length === 0 ||
+      (projectConfig.nodes.length === 1 && idxs.length === 1)
+    ) {
       return;
     }
     let parentNode = { children: projectConfig.nodes };
@@ -57,7 +60,7 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
     onChange(projectConfig);
   };
 
-  const onChangeNodeTitle = function (nodeID, title) {
+  function onChangeNode(nodeID, title, content) {
     const idxs = getIndexes(nodeID);
     if (idxs.length === 0) {
       return;
@@ -67,21 +70,9 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
       node = node.children[idx];
     });
     node.title = title;
+    node.content = btoa(content);
     onChange(projectConfig);
-  };
-
-  const onChangeNodeBody = function (nodeID, body) {
-    const idxs = getIndexes(nodeID);
-    if (idxs.length === 0) {
-      return;
-    }
-    let node = { children: projectConfig.nodes };
-    idxs.map((idx) => {
-      node = node.children[idx];
-    });
-    node.content = btoa(body);
-    onChange(projectConfig);
-  };
+  }
 
   const onCnxAdd = function (start, end) {
     if (start === "container") {
@@ -149,8 +140,7 @@ function Roadmap({ projectConfig, onChange, onNodeClick }) {
                 onDelete={onNodeDelete}
                 onCheck={onNodeCheck}
                 onClick={onNodeClick}
-                onChangeNodeTitle={onChangeNodeTitle}
-                onChangeNodeBody={onChangeNodeBody}
+                onChangeNode={onChangeNode}
               />
             </div>
           );
