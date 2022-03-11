@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/roadmap-me/static/css/main.b71c8f61.css",
-    "main.js": "/roadmap-me/static/js/main.9cbf21bc.js",
+    "main.js": "/roadmap-me/static/js/main.59f30454.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/roadmap-me/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/roadmap-me/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/roadmap-me/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
@@ -66,10 +66,10 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/roadmap-me/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/roadmap-me/index.html",
     "main.b71c8f61.css.map": "/roadmap-me/static/css/main.b71c8f61.css.map",
-    "main.9cbf21bc.js.map": "/roadmap-me/static/js/main.9cbf21bc.js.map"
+    "main.59f30454.js.map": "/roadmap-me/static/js/main.59f30454.js.map"
   },
   "entrypoints": [
     "static/css/main.b71c8f61.css",
-    "static/js/main.9cbf21bc.js"
+    "static/js/main.59f30454.js"
   ]
 }
