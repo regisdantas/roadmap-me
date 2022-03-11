@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 import Roadmap from "./components/Roadmap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -12,12 +13,12 @@ import "./App.css";
 
 const startProject = {
   projectName: "New Project",
-  start: "Start",
-  end: "Finish",
+  start: "From",
+  end: "Toward",
   nodes: [
     {
-      title: "To Accomplish",
-      content: "",
+      title: "Example Node",
+      content: "IyBUYWJsZSBvZiBDb250ZW50cwotLS0KCiMgaDEgSGVhZGluZyA4LSkKIyMgaDIgSGVhZGluZwojIyMgaDMgSGVhZGluZwojIyMjIGg0IEhlYWRpbmcKIyMjIyMgaDUgSGVhZGluZwojIyMjIyMgaDYgSGVhZGluZwoKCiMjIEhvcml6b250YWwgUnVsZXMKCl9fXwoKLS0tCgoqKioKCiMjIENoZWNrTGlzdHMKCiogW3hdIExpc3QgaXRlbSBjaGVja2VkCiogW3hdIExpc3QgaXRlbSBjaGVja2VkCiogWyBdIExpc3QgaXRlbSB1bmNoZWNrZWQKKiBbeF0gTGlzdCBpdGVtIGNoZWNrZWQKKiBbIF0gTGlzdCBpdGVtIHVuY2hlY2tlZAoqIFt4XSBMaXN0IGl0ZW0gY2hlY2tlZAoKIyMgRW1waGFzaXMKCioqVGhpcyBpcyBib2xkIHRleHQqKgoKX19UaGlzIGlzIGJvbGQgdGV4dF9fCgoqVGhpcyBpcyBpdGFsaWMgdGV4dCoKCl9UaGlzIGlzIGl0YWxpYyB0ZXh0XwoKfn5TdHJpa2V0aHJvdWdofn4KCgojIyBCbG9ja3F1b3RlcwoKCj4gQmxvY2txdW90ZXMgY2FuIGFsc28gYmUgbmVzdGVkLi4uCj4+IC4uLmJ5IHVzaW5nIGFkZGl0aW9uYWwgZ3JlYXRlci10aGFuIHNpZ25zIHJpZ2h0IG5leHQgdG8gZWFjaCBvdGhlci4uLgo+ID4gPiAuLi5vciB3aXRoIHNwYWNlcyBiZXR3ZWVuIGFycm93cy4KCgojIyBMaXN0cwoKVW5vcmRlcmVkCgorIENyZWF0ZSBhIGxpc3QgYnkgc3RhcnRpbmcgYSBsaW5lIHdpdGggYCtgLCBgLWAsIG9yIGAqYAorIFN1Yi1saXN0cyBhcmUgbWFkZSBieSBpbmRlbnRpbmcgMiBzcGFjZXM6Cj4gIC0gTWFya2VyIGNoYXJhY3RlciBjaGFuZ2UgZm9yY2VzIG5ldyBsaXN0IHN0YXJ0Ogo+PiAgICAqIEFjIHRyaXN0aXF1ZSBsaWJlcm8gdm9sdXRwYXQgYXQKICAgICsgRmFjaWxpc2lzIGluIHByZXRpdW0gbmlzbCBhbGlxdWV0CiAgICAtIE51bGxhIHZvbHV0cGF0IGFsaXF1YW0gdmVsaXQKKyBWZXJ5IGVhc3khCgpPcmRlcmVkCgoxLiBMb3JlbSBpcHN1bSBkb2xvciBzaXQgYW1ldAoyLiBDb25zZWN0ZXR1ciBhZGlwaXNjaW5nIGVsaXQKMy4gSW50ZWdlciBtb2xlc3RpZSBsb3JlbSBhdCBtYXNzYQoKCjEuIFlvdSBjYW4gdXNlIHNlcXVlbnRpYWwgbnVtYmVycy4uLgoxLiAuLi5vciBrZWVwIGFsbCB0aGUgbnVtYmVycyBhcyBgMS5gCgpTdGFydCBudW1iZXJpbmcgd2l0aCBvZmZzZXQ6Cgo1Ny4gZm9vCjEuIGJhcgoKCiMjIENvZGUKCklubGluZSBgY29kZWAKCkluZGVudGVkIGNvZGUKCiAgICAvLyBTb21lIGNvbW1lbnRzCiAgICBsaW5lIDEgb2YgY29kZQogICAgbGluZSAyIG9mIGNvZGUKICAgIGxpbmUgMyBvZiBjb2RlCgoKQmxvY2sgY29kZSAiZmVuY2VzIgoKYGBgClNhbXBsZSB0ZXh0IGhlcmUuLi4KYGBgCgpTeW50YXggaGlnaGxpZ2h0aW5nCgpgYGAganMKdmFyIGZvbyA9IGZ1bmN0aW9uIChiYXIpIHsKICByZXR1cm4gYmFyKys7Cn07Cgpjb25zb2xlLmxvZyhmb28oNSkpOwpgYGAKCiMjIFRhYmxlcwoKfCBPcHRpb24gfCBEZXNjcmlwdGlvbiB8CnwgLS0tLS0tIHwgLS0tLS0tLS0tLS0gfAp8IGRhdGEgICB8IHBhdGggdG8gZGF0YSBmaWxlcyB0byBzdXBwbHkgdGhlIGRhdGEgdGhhdCB3aWxsIGJlIHBhc3NlZCBpbnRvIHRlbXBsYXRlcy4gfAp8IGVuZ2luZSB8IGVuZ2luZSB0byBiZSB1c2VkIGZvciBwcm9jZXNzaW5nIHRlbXBsYXRlcy4gSGFuZGxlYmFycyBpcyB0aGUgZGVmYXVsdC4gfAp8IGV4dCAgICB8IGV4dGVuc2lvbiB0byBiZSB1c2VkIGZvciBkZXN0IGZpbGVzLiB8CgpSaWdodCBhbGlnbmVkIGNvbHVtbnMKCnwgT3B0aW9uIHwgRGVzY3JpcHRpb24gfAp8IC0tLS0tLTp8IC0tLS0tLS0tLS0tOnwKfCBkYXRhICAgfCBwYXRoIHRvIGRhdGEgZmlsZXMgdG8gc3VwcGx5IHRoZSBkYXRhIHRoYXQgd2lsbCBiZSBwYXNzZWQgaW50byB0ZW1wbGF0ZXMuIHwKfCBlbmdpbmUgfCBlbmdpbmUgdG8gYmUgdXNlZCBmb3IgcHJvY2Vzc2luZyB0ZW1wbGF0ZXMuIEhhbmRsZWJhcnMgaXMgdGhlIGRlZmF1bHQuIHwKfCBleHQgICAgfCBleHRlbnNpb24gdG8gYmUgdXNlZCBmb3IgZGVzdCBmaWxlcy4gfAoKCiMjIExpbmtzCgpbbGluayB0ZXh0XShodHRwOi8vZGV2Lm5vZGVjYS5jb20pCgpbbGluayB3aXRoIHRpdGxlXShodHRwOi8vbm9kZWNhLmdpdGh1Yi5pby9yZWdpc2RhbnRhcy9yb2FkbWFwLW1lICJ0aXRsZSB0ZXh0ISIpCgpBdXRvY29udmVydGVkIGxpbmsgaHR0cHM6Ly9naXRodWIuY29tL3JlZ2lzZGFudGFzL3JvYWRtYXAtbWUgKGVuYWJsZSBsaW5raWZ5IHRvIHNlZSkKCgojIyBJbWFnZXMKCiFbTWluaW9uXShodHRwczovL29jdG9kZXguZ2l0aHViLmNvbS9pbWFnZXMvbWluaW9uLnBuZykKIVtTdG9ybXRyb29wb2NhdF0oaHR0cHM6Ly9vY3RvZGV4LmdpdGh1Yi5jb20vaW1hZ2VzL3N0b3JtdHJvb3BvY2F0LmpwZyAiVGhlIFN0b3JtdHJvb3BvY2F0IikKCkxpa2UgbGlua3MsIEltYWdlcyBhbHNvIGhhdmUgYSBmb290bm90ZSBzdHlsZSBzeW50YXgKCiFbQWx0IHRleHRdW2lkXQoKV2l0aCBhIHJlZmVyZW5jZSBsYXRlciBpbiB0aGUgZG9jdW1lbnQgZGVmaW5pbmcgdGhlIFVSTCBsb2NhdGlvbjoKCltpZF06IGh0dHBzOi8vb2N0b2RleC5naXRodWIuY29tL2ltYWdlcy9kb2pvY2F0LmpwZyAgIlRoZSBEb2pvY2F0IgoKCiMjIyBFbW9qaWVzCgo+IENsYXNzaWMgbWFya3VwOiA6d2luazogOmNydXNoOiA6Y3J5OiA6dGVhcjogOmxhdWdoaW5nOiA6eXVtOgo+Cj4gU2hvcnRjdXRzIChlbW90aWNvbnMpOiA6LSkgOi0oIDgtKSA7KQoKCiMjIyBGb290bm90ZXMKCkZvb3Rub3RlIDEgbGlua1teZmlyc3RdLgoKRm9vdG5vdGUgMiBsaW5rW15zZWNvbmRdLgoKSW5saW5lIGZvb3Rub3RlXltUZXh0IG9mIGlubGluZSBmb290bm90ZV0gZGVmaW5pdGlvbi4KCkR1cGxpY2F0ZWQgZm9vdG5vdGUgcmVmZXJlbmNlW15zZWNvbmRdLgoKW15maXJzdF06IEZvb3Rub3RlICoqY2FuIGhhdmUgbWFya3VwKioKCiAgICBhbmQgbXVsdGlwbGUgcGFyYWdyYXBocy4KCltec2Vjb25kXTogRm9vdG5vdGUgdGV4dC4KCg==",
       children: [],
     },
   ],
@@ -59,13 +60,7 @@ function App() {
     }
     setSnackBar({ ...snackBar, state: false });
   };
-  function loadNodeContentView(
-    checked,
-    title,
-    content,
-    onCheckToggle,
-    onSave
-  ) {
+  function loadNodeContentView(checked, title, content, onCheckToggle, onSave) {
     setContentViewCtrl(
       structuredClone({
         state: true,
@@ -78,7 +73,6 @@ function App() {
     setContentViewCallbacks({
       onCheckToggle: onCheckToggle,
       onSave: onSave,
-
     });
   }
 
@@ -163,7 +157,7 @@ function App() {
       setContentViewCtrl(structuredClone({ ...contentViewCtrl }));
     }
   }
-
+  const { width, height } = useWindowDimensions();
   return (
     <div className="App">
       <Header />
@@ -175,7 +169,7 @@ function App() {
         onSaveLocalFile={onSaveLocalFile}
         onSaveAsLocalFile={onSaveAsLocalFile}
       />
-      <div className="mainBody">
+      <div className="mainBody" style={{ minHeight: `${ (height>300) ? height-140 : 300}px` }}>
         <Roadmap
           projectConfig={projectConfig}
           onChange={onProjectChange}

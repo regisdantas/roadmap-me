@@ -15,7 +15,6 @@ ul {
   justify-content: center;
   flex: 1;
   height: fit-content;
-  min-height: 80%;
 
-  /* border: 1px solid rgb(0, 255, 34); */
+  border: 1px solid rgb(0, 255, 34);
 }

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box, Button, TextField } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
@@ -10,6 +11,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkToc from "remark-toc";
 import remarkBreaks from "remark-breaks";
+import stringWidth from 'string-width'
 // import remarkMdx from "remark-mdx";
 // import remarkPrism from "remark-prism";
 
@@ -23,17 +25,6 @@ function ContentView({
   contentViewCallbacks,
   toggleContentView,
 }) {
-  function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height,
-    };
-  }
-  const [windowDimensions, setWindowDimensions] = React.useState(
-    getWindowDimensions()
-  );
-
   const [contentView, setContentView] = React.useState({
     title: contentViewCtrl.title,
     content: contentViewCtrl.content,
@@ -50,14 +41,9 @@ function ContentView({
     }
   }, [contentViewCtrl.state]);
 
-  React.useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  function ImageRenderer(props) {
+    return <img {...props} style={{maxWidth: '100%'}} />
+  }
 
   return (
     <div>
@@ -73,10 +59,10 @@ function ContentView({
           toggleContentView(false);
         }}
       >
-        <Box sx={{ width: "50vw" }} role="presentation">
+        <Box sx={{ width: "50vw"}} role="presentation">
           <div
             className="contentView"
-            style={{ margin: "20px 20px 20px", padding: "0px 20px 0px" }}
+            style={{ margin: "20px 20px 20px", padding: "0px 20px 0px"}}
           >
             <div
               style={{
@@ -133,14 +119,17 @@ function ContentView({
                       },
                     ],
                     [remarkToc, { tight: true, ordered: true }],
-                    remarkGfm,
+                    [remarkGfm, {stringLength: stringWidth}],
                     remarkMath,
                     rehypeKatex,
                     remarkBreaks,
+                    // remarkGridTables,
                     // remarkPrism,
                     remarkFrontmatter,
                     // remarkMdx
                   ]}
+                  className={'reactMarkDown'}
+                  style={{ width: "50vw" }}
                 />
               }
             </div>
@@ -210,7 +199,7 @@ function ContentView({
               <textarea
                 style={{
                   width: "100%",
-                  height: `${windowDimensions.height - 150}px`,
+                  height: `${useWindowDimensions().height - 150}px`,
                   boxSizing: "border-box",
                   resize: "none",
                   fontSize: "16px",
