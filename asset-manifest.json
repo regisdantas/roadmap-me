@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/roadmap-me/static/css/main.bf56a284.css",
-    "main.js": "/roadmap-me/static/js/main.66953105.js",
+    "main.css": "/roadmap-me/static/css/main.befe8742.css",
+    "main.js": "/roadmap-me/static/js/main.0416221c.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/roadmap-me/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/roadmap-me/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/roadmap-me/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
@@ -11,7 +11,6 @@
     "static/media/KaTeX_Math-Italic.ttf": "/roadmap-me/static/media/KaTeX_Math-Italic.8a5f936332e8028c7278.ttf",
     "static/media/KaTeX_Math-BoldItalic.ttf": "/roadmap-me/static/media/KaTeX_Math-BoldItalic.bf2d440b3a42ea78a998.ttf",
     "static/media/KaTeX_Main-Regular.woff": "/roadmap-me/static/media/KaTeX_Main-Regular.4f35fbcc9ee8614c2bcc.woff",
-    "static/media/balsamiq.woff2": "/roadmap-me/static/media/balsamiq.0856531d50c3c2b0b724.woff2",
     "static/media/KaTeX_Main-Bold.woff": "/roadmap-me/static/media/KaTeX_Main-Bold.0c3b8929d377c0e9b2f3.woff",
     "static/media/KaTeX_AMS-Regular.woff2": "/roadmap-me/static/media/KaTeX_AMS-Regular.73ea273a72f4aca30ca5.woff2",
     "static/media/KaTeX_Typewriter-Regular.ttf": "/roadmap-me/static/media/KaTeX_Typewriter-Regular.c5c02d763c89380dcb4e.ttf",
@@ -65,11 +64,11 @@
     "static/media/KaTeX_Size3-Regular.woff": "/roadmap-me/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/roadmap-me/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/roadmap-me/index.html",
-    "main.bf56a284.css.map": "/roadmap-me/static/css/main.bf56a284.css.map",
-    "main.66953105.js.map": "/roadmap-me/static/js/main.66953105.js.map"
+    "main.befe8742.css.map": "/roadmap-me/static/css/main.befe8742.css.map",
+    "main.0416221c.js.map": "/roadmap-me/static/js/main.0416221c.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf56a284.css",
-    "static/js/main.66953105.js"
+    "static/css/main.befe8742.css",
+    "static/js/main.0416221c.js"
   ]
 }
