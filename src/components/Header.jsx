@@ -67,79 +67,38 @@ function Header(props) {
                   borderRadius: "25px",
                 }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "bold",
-                  }}
-                  color="black"
-                  gutterBottom
-                >
-                  {"Examples"}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "bold",
-                    padding: "0px 8px 0px",
-                  }}
-                  color="black"
-                  gutterBottom
-                >
-                  {"/"}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "bold",
-                  }}
-                  color="black"
-                  gutterBottom
-                >
-                  {"GitHub"}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "bold",
-                    padding: "0px 8px 0px",
-                  }}
-                  color="black"
-                  gutterBottom
-                >
-                  {"/"}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "bold",
-                  }}
-                  color="black"
-                  gutterBottom
-                >
-                  {"Contact"}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "bold",
-                    padding: "0px 8px 0px",
-                  }}
-                  color="black"
-                  gutterBottom
-                >
-                  {"/"}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "bold",
-                  }}
-                  color="black"
-                  gutterBottom
-                >
-                  {"Author"}
-                </Typography>
+                {props.menu.map((item, index) => {
+                  return (
+                    <>
+                      {" "}
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: "bold",
+                        }}
+                        color="black"
+                        gutterBottom
+                      >
+                        {item}
+                      </Typography>
+                      {index < props.menu.length - 1 ? (
+                        <Typography
+                          variant="h5"
+                          sx={{
+                            fontWeight: "bold",
+                            padding: "0px 8px 0px",
+                          }}
+                          color="black"
+                          gutterBottom
+                        >
+                          {"/"}
+                        </Typography>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  );
+                })}
               </div>
             </div>
           </div>

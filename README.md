@@ -33,13 +33,18 @@
 *   [x] [H] **Edit Node Name** - Change node name in content view.
 *   [x] [H] **Save** - Download project file.
 *   [x] [H] **Save As** - Save project to file specific in local computer.
-*   [ ] [H] **Node Content MD Edit** - Be able to edit node markdown content in right drawer content view.
+*   [x] [H] **Node Content MD Edit** - Be able to edit node markdown content in right drawer content view.
+*   [x] [M] **Markdown styling** - Added beatiful styling to markdown visualizer.
 *   [ ] [M] **Top-Menu** - Add links to buttons in top menu.
 *   [ ] [M] **Start/End Labels** - Click and Edit Start and End Labels.
 *   [x] [M] **Check Nodes** - Nodes can be checked (marked as done/achieved).
 *   [ ] [M] **Check Branch** - All branch can be checked when node is checked (marked as done/achieved).
 *   [ ] [L] **Google Drive Integration** - Be able to Open/Save projects from/to Google Drive.
 *   [ ] [L] **Path Types** - Be able to set path types, (main, alternative).
+*   [ ] [L] **Links in New Tab** - Open links in a new tab when clicked.
+*   [ ] [L] **Drag and Drop Nodes** - Be able to drag and drop nodes and it's subtree to other places.
+*   [ ] [L] **Node Priorities** - Add priority tags/color to nodes.
+*   [ ] [L] **Roadmap to List** - Generate a check-list from nodes.
 
 ### License
 
