@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box, Button, TextField } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
@@ -11,7 +11,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkToc from "remark-toc";
 import remarkBreaks from "remark-breaks";
-import stringWidth from 'string-width'
+import stringWidth from "string-width";
 // import remarkMdx from "remark-mdx";
 // import remarkPrism from "remark-prism";
 
@@ -42,7 +42,7 @@ function ContentView({
   }, [contentViewCtrl.state]);
 
   function ImageRenderer(props) {
-    return <img {...props} style={{maxWidth: '100%'}} />
+    return <img {...props} style={{ maxWidth: "100%" }} />;
   }
 
   return (
@@ -59,10 +59,10 @@ function ContentView({
           toggleContentView(false);
         }}
       >
-        <Box sx={{ width: "50vw"}} role="presentation">
+        <Box sx={{ width: "50vw" }} role="presentation">
           <div
             className="contentView"
-            style={{ margin: "20px 20px 20px", padding: "0px 20px 0px"}}
+            style={{ margin: "20px 20px 20px", padding: "0px 20px 0px" }}
           >
             <div
               style={{
@@ -119,7 +119,7 @@ function ContentView({
                       },
                     ],
                     [remarkToc, { tight: true, ordered: true }],
-                    [remarkGfm, {stringLength: stringWidth}],
+                    [remarkGfm, { stringLength: stringWidth }],
                     remarkMath,
                     rehypeKatex,
                     remarkBreaks,
@@ -128,7 +128,7 @@ function ContentView({
                     remarkFrontmatter,
                     // remarkMdx
                   ]}
-                  className={'reactMarkDown'}
+                  className={"reactMarkDown"}
                   style={{ width: "50vw" }}
                 />
               }

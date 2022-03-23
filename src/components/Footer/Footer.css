@@ -1,0 +1,16 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.typo-root {
+  color: white;
+  font-size: 16px !important;
+  padding-top: 10px;
+}

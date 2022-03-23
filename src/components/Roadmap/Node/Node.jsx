@@ -177,7 +177,8 @@ function Node({
               node.title,
               atob(node.content),
               () => onCheck(nodeID),
-              (newTitle, newContent) => onChangeNode(nodeID, newTitle, newContent)
+              (newTitle, newContent) =>
+                onChangeNode(nodeID, newTitle, newContent)
             );
           }}
         >

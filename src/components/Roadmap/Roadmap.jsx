@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Node from "./Node";
-import Connection from "./Connection";
+import Node from "./Node/Node";
+import Connection from "./Connection/Connection";
 import { Xwrapper } from "react-xarrows";
 import "./Roadmap.css";
 

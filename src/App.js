@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import useWindowDimensions from "./hooks/useWindowDimensions";
-import Roadmap from "./components/Roadmap";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ToolBar from "./components/ToolBar";
-import ContentView from "./components/ContentView";
+import Roadmap from "./components/Roadmap/Roadmap";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import ToolBar from "./components/ToolBar/ToolBar";
+import ContentView from "./components/ContentView/ContentView";
 import structuredClone from "@ungap/structured-clone";
 
 import { Snackbar, Alert } from "@mui/material";
@@ -24,6 +24,14 @@ const startProject = {
     },
   ],
 };
+
+const menuEntries = [
+  { name: "Author", link: "author" },
+  { name: "Contact", link: "contact" },
+  { name: "Examples", link: "examples" },
+  { name: "GitHub", link: "github" },
+  { name: "Portifolio", link: "portifolio" },
+];
 
 const initiaContentView = {
   state: false,
@@ -161,10 +169,7 @@ function App() {
   const { width, height } = useWindowDimensions();
   return (
     <div className="App">
-      <Header
-        title="ASCII FPS"
-        menu={["Author", "Contact", "Examples", "GitHub", "Portifolio"]}
-      />
+      <Header title="ROADMAP.me" menuEntries={menuEntries} />
       <ToolBar
         projectName={projectConfig.projectName}
         onChangeProjectName={onChangeProjectName}
