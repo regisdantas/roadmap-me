@@ -32,7 +32,7 @@ function ToolBar({
     setProjectNameInput({ ...projectNameInput, value: projectName });
   }
   return (
-    <AppBar position="fixed" sx={{ top: "48px", zIndex: "2" }}>
+    <AppBar position="fixed" sx={{ top: "40px", zIndex: "2" }}>
       <Toolbar
         style={styles.customizeToolbar}
         variant="dense"

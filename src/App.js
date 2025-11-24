@@ -25,13 +25,6 @@ const startProject = {
   ],
 };
 
-const menuEntries = [
-  { name: "Author", link: "author" },
-  { name: "Contact", link: "contact" },
-  { name: "Examples", link: "examples" },
-  { name: "GitHub", link: "github" },
-  { name: "Portifolio", link: "portifolio" },
-];
 
 const initiaContentView = {
   state: false,
@@ -169,7 +162,7 @@ function App() {
   const { width, height } = useWindowDimensions();
   return (
     <div className="App">
-      <Header title="ROADMAP.me" menuEntries={menuEntries} />
+      <Header title="ROADMAP.me"/>
       <ToolBar
         projectName={projectConfig.projectName}
         onChangeProjectName={onChangeProjectName}
@@ -180,7 +173,7 @@ function App() {
       />
       <div
         className="mainBody"
-        style={{ minHeight: `${height > 300 ? height - 140 : 300}px` }}
+        style={{ minHeight: `${height > 300 ? height - 100 : 300}px` }}
       >
         <Roadmap
           projectConfig={projectConfig}

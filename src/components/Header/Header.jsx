@@ -14,23 +14,6 @@ function Header(props) {
             <a href=" ">{props.title}</a>
           </Typography>
         </div>
-        <div className="header-menu">
-          <Typography variant="h6" classes={{ h6: "typo-menu-h6" }}>
-            {props.menuEntries.map((menuEntry, index) => {
-              let menuEntryEle;
-              if (index < props.menuEntries.length - 1) {
-                menuEntryEle = (
-                  <>
-                    <a href={menuEntry.link}>{menuEntry.name}</a> /{" "}
-                  </>
-                );
-              } else {
-                menuEntryEle = <a href={menuEntry.link}>{menuEntry.name}</a>;
-              }
-              return menuEntryEle;
-            })}
-          </Typography>
-        </div>
       </div>
     </header>
   );
@@ -38,7 +21,6 @@ function Header(props) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  menu: PropTypes.array.isRequired,
 };
 
 export default Header;
