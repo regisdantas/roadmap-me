@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/roadmap-me/static/css/main.befe8742.css",
-    "main.js": "/roadmap-me/static/js/main.0416221c.js",
+    "main.css": "/roadmap-me/static/css/main.53d97745.css",
+    "main.js": "/roadmap-me/static/js/main.80a0950f.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/roadmap-me/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/roadmap-me/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/roadmap-me/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
@@ -64,11 +64,11 @@
     "static/media/KaTeX_Size3-Regular.woff": "/roadmap-me/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/roadmap-me/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/roadmap-me/index.html",
-    "main.befe8742.css.map": "/roadmap-me/static/css/main.befe8742.css.map",
-    "main.0416221c.js.map": "/roadmap-me/static/js/main.0416221c.js.map"
+    "main.53d97745.css.map": "/roadmap-me/static/css/main.53d97745.css.map",
+    "main.80a0950f.js.map": "/roadmap-me/static/js/main.80a0950f.js.map"
   },
   "entrypoints": [
-    "static/css/main.befe8742.css",
-    "static/js/main.0416221c.js"
+    "static/css/main.53d97745.css",
+    "static/js/main.80a0950f.js"
   ]
 }
